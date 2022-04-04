@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-
+import NavBar from './components/NavBar';
+import FoodCategories from './components/FoodCategories';
+import MenuItems from './components/MenuItems';
+import HomePage from './components/HomePage';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Store } from './store';
+import { useContext } from 'react';
 function App() {
+  const { state } = useContext(Store);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <NavBar />
+      <BrowserRouter>
+      <HomePage />
+      <div style={{ margin: "5px" ,display: 'flex' ,justifyContent: "center", alignItems: "center"}}>
+        <FoodCategories />
+      </div>
+      <div style= {{padding:"4" ,display: 'flex' ,justifyContent: "center", alignItems: "center"}}>
+      <MenuItems/>
+        </div>
+        </BrowserRouter>
     </div>
+    
   );
 }
 
