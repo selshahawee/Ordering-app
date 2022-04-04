@@ -6,10 +6,12 @@ import { Avatar } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import { listCategories } from '../actions';
 import { useContext, useEffect } from 'react';
-import { Store }  from '../store';
+import { Store }  from '../Store';
+import { Button } from '@mui/material';
 
+ 
 
- const Item = styled(Paper)(({ theme }) => ({
+const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -31,32 +33,14 @@ export default function FoodCategories() {
         spacing={2}
         p={5} >
         
-        <Item p={50}><Avatar sx={{ width: 80, height: 80 }} src="/images/seafoodpizza.png"></Avatar> Popular</Item>
-        <Item> <Avatar sx={{ width: 80, height: 80 }}src="/images/pizza1.png"></Avatar>Pizza</Item>
-        <Item> <Avatar sx={{ width: 80, height: 80 }}src="/images/burger.png"></Avatar>Burgers</Item>
-        <Item> <Avatar sx={{ width: 80, height: 80 }} src="/images/crepe.png"></Avatar>Crepe</Item>
-        <Item> <Avatar sx={{ width: 80, height: 80 }}src="/images/beverages.jpeg"></Avatar>Beverages</Item>
+       <Button><Item p={50}><Avatar  sx={{ width: 80, height: 80 }} src="/images/seafoodpizza.png"></Avatar> Popular</Item></Button> 
+       <Button><Item Button> <Avatar sx={{ width: 80, height: 80 }}src="/images/pizza1.png"></Avatar>Pizza</Item></Button> 
+       <Button><Item Button> <Avatar sx={{ width: 80, height: 80 }}src="/images/burger.png"></Avatar>Burgers</Item></Button> 
+       <Button><Item Button> <Avatar sx={{ width: 80, height: 80 }} src="/images/crepe3.png"></Avatar>Crepe</Item></Button> 
+       <Button><Item Button> <Avatar sx={{ width: 80, height: 80 }}src="/images/beverages.jpeg"></Avatar>Beverages</Item></Button> 
       </Stack>
     </div>
   );
 }
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: 'center',
-  
-//   color: theme.palette.text.secondary,
-// }));
 
-// export default function DirectionStack() {
-//   return (
-//     <div>
-//       <Stack  direction="row" spacing={2}>
-        
-        
-//       </Stack>
-//     </div>
-//   );
-// }

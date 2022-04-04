@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import Axios from "axios";
 import {
   ORDER_SET_TYPE,
   CATEGORY_LIST_REQUEST,
@@ -21,7 +21,7 @@ import {
   ORDER_QUEUE_LIST_REQUEST,
   ORDER_QUEUE_LIST_SUCCESS,
   ORDER_QUEUE_LIST_FAIL,
-} from './constants';
+} from "./constants";
 
 export const setOrderType = (dispatch, orderType) => {
   return dispatch({
@@ -33,7 +33,7 @@ export const setOrderType = (dispatch, orderType) => {
 export const listCategories = async (dispatch) => {
   dispatch({ type: CATEGORY_LIST_REQUEST });
   try {
-    const { data } = await Axios.get('/api/categories');
+    const { data } = await Axios.get("/api/categories");
     return dispatch({
       type: CATEGORY_LIST_SUCCESS,
       payload: data,
@@ -46,7 +46,7 @@ export const listCategories = async (dispatch) => {
   }
 };
 
-export const listProducts = async (dispatch, categoryName = '') => {
+export const listProducts = async (dispatch, categoryName = "") => {
   dispatch({ type: PRODUCT_LIST_REQUEST });
   try {
     const { data } = await Axios.get(`/api/products?category=${categoryName}`);
@@ -92,7 +92,7 @@ export const setPaymentType = async (dispatch, paymentType) => {
 export const createOrder = async (dispatch, order) => {
   dispatch({ type: ORDER_CREATE_REQUEST });
   try {
-    const { data } = await Axios.post('/api/orders', order);
+    const { data } = await Axios.post("/api/orders", order);
     dispatch({
       type: ORDER_CREATE_SUCCESS,
       payload: data,

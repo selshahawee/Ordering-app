@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from "react";
 import {
   CATEGORY_LIST_FAIL,
   CATEGORY_LIST_REQUEST,
@@ -21,7 +21,7 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   SCREEN_SET_WIDTH,
-} from './constants';
+} from "./constants";
 
 export const Store = createContext();
 
@@ -31,9 +31,9 @@ const initialState = {
   productList: { loading: true },
   queueList: { loading: true },
   order: {
-    orderType: 'Eat in',
+    orderType: "Eat in",
     orderItems: [],
-    paymentType: 'Pay here',
+    paymentType: "Pay here",
   },
   orderCreate: { loading: true },
 
