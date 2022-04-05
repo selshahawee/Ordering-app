@@ -3,37 +3,36 @@ import Grid from "@mui/material/Grid";
 import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import RectangleIcon from "@mui/icons-material/Rectangle";
-import { red } from "@mui/material/colors";
+
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from '@mui/material/FormControlLabel';
-
-
-
-
-
-const AdminPage = () => {
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Divider from '@mui/material/Divider';const AdminPage = () => {
   return (
-    <Grid container spacing={2} sx={{ my: 5 }}>
-      
-      <Grid sm={2} sx={{ minHeight:"100%" ,pt: 6, bgcolor: "#303030"}}>
+    <Grid
+      container
+      spacing={2}
+      sx={{ mb: 0, mt: 5, maxWidth: "lg", minHeight: "85vh" }}
+    >
+      <Grid sm={3} sx={{ py: 6, bgcolor: "#303030" }}>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Typography sx={{ color: "white" }} variant="h4">
             Dashboard
           </Typography>
+          <Divider variant="middle"/>
         </Box>
+        <br/>
         <Box sx={{ justifyContent: "center", displayDirection: "column" }}>
-          <Button
+          <Button  variant="outlined"
             sx={{ px: 4, color: "white", display: "flex", m: 3 }}
             startIcon={<RectangleIcon fontsize="large" sx={{ color: "red" }} />}
           >
             Pending Orders
           </Button>
-          <Button
+          <Button variant="outlined"
             sx={{ px: 4, color: "white", display: "flex", m: 3 }}
-            startIcon={<RectangleIcon fontsize="large" sx={{ color: 'red' }} />}
+            startIcon={<RectangleIcon fontsize="large" sx={{ color: "red" }} />}
           >
             Completed Orders
           </Button>
@@ -44,22 +43,35 @@ const AdminPage = () => {
         sm={9}
         spacing={2}
         sx={{
-          mt: 2,
+          mt: 5,
           display: "flex",
           flexWrap: "wrap",
           displayDirection: "row",
         }}
       >
-
         <Grid sm={5} sx={{ m: 3 }}>
           <Card>
             <Box sx={{ bgcolor: "#303030" }}>
-              <Typography align="right" sx={{ color: "white", mx:1 }}>05:00</Typography>
+              <Typography align="right" sx={{ color: "white", mx: 1 }}>
+                05:00
+                
+              </Typography>
             </Box>
-            <CardContent sx={{ display: "inline-flex", flexDirection: "column" }}>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
+            <CardContent
+              sx={{ display: "inline-flex", flexDirection: "column" }}
+            >
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
             </CardContent>
           </Card>
         </Grid>
@@ -67,12 +79,26 @@ const AdminPage = () => {
         <Grid sm={5} sx={{ m: 3 }}>
           <Card>
             <Box sx={{ bgcolor: "#303030" }}>
-              <Typography align="right" sx={{ color: "white", mx:1 }}>05:00</Typography>
+              <Typography align="right" sx={{ color: "white", mx: 1 }}>
+                05:00
+                
+              </Typography>
             </Box>
-            <CardContent sx={{ display: "inline-flex", flexDirection: "column" }}>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
+            <CardContent
+              sx={{ display: "inline-flex", flexDirection: "column" }}
+            >
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
             </CardContent>
           </Card>
         </Grid>
@@ -80,12 +106,26 @@ const AdminPage = () => {
         <Grid sm={5} sx={{ m: 3 }}>
           <Card>
             <Box sx={{ bgcolor: "#303030" }}>
-              <Typography align="right" sx={{ color: "white", mx:1 }}>05:00</Typography>
+              <Typography align="right" sx={{ color: "white", mx: 1 }}>
+                05:00
+                
+              </Typography>
             </Box>
-            <CardContent sx={{ display: "inline-flex", flexDirection: "column" }}>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
+            <CardContent
+              sx={{ display: "inline-flex", flexDirection: "column" }}
+            >
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
             </CardContent>
           </Card>
         </Grid>
@@ -93,17 +133,53 @@ const AdminPage = () => {
         <Grid sm={5} sx={{ m: 3 }}>
           <Card>
             <Box sx={{ bgcolor: "#303030" }}>
-              <Typography align="right" sx={{ color: "white", mx:1 }}>05:00</Typography>
+              <Typography align="right" sx={{ color: "white", mx: 1 }}>
+                05:00
+                
+              </Typography>
             </Box>
-            <CardContent sx={{ display: "inline-flex", flexDirection: "column" }}>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
-              <FormControlLabel label="Seafood Qty: 1" control={<Checkbox color="default" />}/>
+            <CardContent
+              sx={{ display: "inline-flex", flexDirection: "column" }}
+            >
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+            </CardContent>
+          </Card>
+          <Card>
+            <Box sx={{ bgcolor: "#303030" }}>
+              <Typography align="right" sx={{ color: "white", mx: 1 }}>
+                05:00
+                
+              </Typography>
+            </Box>
+            <CardContent
+              sx={{ display: "inline-flex", flexDirection: "column" }}
+            >
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
+              <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+              />
             </CardContent>
           </Card>
         </Grid>
-
-
       </Grid>
     </Grid>
   );
