@@ -3,12 +3,21 @@ import Grid from "@mui/material/Grid";
 import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import RectangleIcon from "@mui/icons-material/Rectangle";
-
+import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Divider from '@mui/material/Divider';const AdminPage = () => {
+import Divider from '@mui/material/Divider';
+const AdminPage = () => {
+  const [isDone, setIsDone] = useState(false);
+  function handleClick() {
+    setIsDone((prevValue) => {
+      return !prevValue;
+      
+    });
+  }
+
   return (
     <Grid
       container
@@ -57,21 +66,26 @@ import Divider from '@mui/material/Divider';const AdminPage = () => {
                 
               </Typography>
             </Box>
-            <CardContent
+            <CardContent  
               sx={{ display: "inline-flex", flexDirection: "column" }}
-            >
+       >
               <FormControlLabel
+                label="Seafood Qty: 1"
+                control={<Checkbox color="default" />}
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}}/>
+              <FormControlLabel
+                 
+                 onChange={handleClick}
+                 style={{textDecoration: isDone ? "line-through" : "none"}}
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
               />
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
-              <FormControlLabel
-                label="Seafood Qty: 1"
-                control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}}/>
             </CardContent>
           </Card>
         </Grid>
@@ -90,15 +104,18 @@ import Divider from '@mui/material/Divider';const AdminPage = () => {
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}}/>
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}}/>
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}} />
             </CardContent>
           </Card>
         </Grid>
@@ -117,15 +134,17 @@ import Divider from '@mui/material/Divider';const AdminPage = () => {
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                />
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}}/>
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}} />
             </CardContent>
           </Card>
         </Grid>
@@ -144,15 +163,17 @@ import Divider from '@mui/material/Divider';const AdminPage = () => {
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                />
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}} />
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}} />
             </CardContent>
           </Card>
           <Card>
@@ -168,15 +189,16 @@ import Divider from '@mui/material/Divider';const AdminPage = () => {
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+               />
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                />
               <FormControlLabel
                 label="Seafood Qty: 1"
                 control={<Checkbox color="default" />}
-              />
+                onChange={handleClick}
+                style={{textDecoration: isDone ? "line-through" : "none"}}/>
             </CardContent>
           </Card>
         </Grid>

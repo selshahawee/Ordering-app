@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { Store } from "../Store";
 import { Alert } from "@material-ui/lab";
 
-import { useStyles } from '../styles';
+import { useStyles } from "../styles";
 import {
   Avatar,
   Box,
@@ -36,9 +36,13 @@ export default function FoodCategories() {
   const { state, dispatch } = useContext(Store);
   const { categories, loading, error } = state.categoryList;
   const [count, setCount] = React.useState(1);
-  const { products, loading: loadingProducts, error: errorProducts } = state.productList;
+  const {
+    products,
+    loading: loadingProducts,
+    error: errorProducts,
+  } = state.productList;
   const [product, setProduct] = useState({});
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const [categoryName, setCategoryName] = useState("");
   const productClickHandler = (p) => {
     setProduct(p);
@@ -50,11 +54,11 @@ export default function FoodCategories() {
     } else {
       listProducts(dispatch, categoryName);
     }
-  }, [dispatch, categoryName]);
+  }, [dispatch, categories,categoryName]);
 
   const categoryClickHandler = (name) => {
     setCategoryName(name);
-    listProducts(dispatch, categoryName);
+    listProducts(dispatch,categoryName);
   };
 
   return (
@@ -71,7 +75,7 @@ export default function FoodCategories() {
         }
         spacing={3}
         p={5}
-       >
+      >
         {loading ? (
           <CircularProgress />
         ) : error ? (
@@ -98,68 +102,67 @@ export default function FoodCategories() {
           </>
         )}
       </Stack>
-      <Grid item md={10} >
-            <Typography
-              gutterBottom
-              className={styles.title}
-              variant="h2"
-              component="h2"
-               style={{textAlign:'center' }}>
-              {categoryName || 'Main Menu'}
-            </Typography>
-            <Grid container spacing={1} style={{justifyContent:'center' }}>
-              {loadingProducts ? (
-                <CircularProgress />
-              ) : errorProducts ? (
-                <Alert severity="error">{errorProducts}</Alert>
-              ) : (
-                products.map((product) => (
-                  
-                    <Card
-                      key={product.id}
-                      className={styles.card}
-                      onClick={() => productClickHandler(product)}
-                      style={{ display:'flex', justifyContent:'center' ,alignItems:"center" }}>
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          alt={product.name}
-                          image={product.image}
-                          className={styles.media}
-                        />
-                      </CardActionArea>
-                      <CardContent>
-                        <Typography
-                          gutterBottom
-                          variant="body2"
-                          color="textPrimary"
-                          component="p"
-                        >
-                          {product.name}
-                        </Typography>
-                        <Box className={styles.cardFooter}>
-                          <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            component="p"
-                          >
-                            {product.calorie} Cal
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            color="textPrimary"
-                            component="p"
-                          >
-                            ${product.price}
-                          </Typography>
-                        </Box>
-                      </CardContent>
-                    </Card>
-                  
-                ))
-              )}
-            </Grid>
-          </Grid>
+      <Grid item md={10}>
+        <Typography
+          gutterBottom
+          className={styles.title}
+          variant="h2"
+          component="h2"
+          style={{ textAlign: "center" }}
+        >
+          {categoryName || "Main Menu"}
+        </Typography>
+        <Grid container spacing={1} style={{ justifyContent: "center" }}>
+          {loadingProducts ? (
+            <CircularProgress />
+          ) : errorProducts ? (
+            <Alert severity="error">{errorProducts}</Alert>
+          ) : (
+            products.map((product) => (
+              <Card
+                key={product.id}
+                className={styles.card}
+                onClick={() => productClickHandler(product)}
+              >
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt={product.name}
+                    image={product.image}
+                    className={styles.media}
+                  />
+                </CardActionArea>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="body2"
+                    color="textPrimary"
+                    component="p"
+                  >
+                    {product.name}
+                  </Typography>
+                  <Box className={styles.cardFooter}>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {product.calorie} Cal
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textPrimary"
+                      component="p"
+                    >
+                      ${product.price}
+                    </Typography>
+                  </Box>
+                </CardContent>
+              </Card>
+            ))
+          )}
+        </Grid>
+      </Grid>
     </div>
   );
 }
