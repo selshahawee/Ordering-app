@@ -113,9 +113,7 @@ const CheckoutPage = () => {
               </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Typography>Total: 20$</Typography>
-                <IconButton>
-                  <AddIcon />
-                </IconButton>
+                
               </Box>
             </CardContent>
           </Box>
@@ -128,15 +126,6 @@ const CheckoutPage = () => {
               <Typography component="div" variant="h5">
                 Seafood
               </Typography>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography>Qty: 1</Typography>
-                <IconButton>
-                  <RemoveIcon />
-                </IconButton>
-                <IconButton>
-                  <AddIcon />
-                </IconButton>
-              </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
               <Button
                   aria-label="reduce"
@@ -160,6 +149,10 @@ const CheckoutPage = () => {
                 >
                   <AddIcon fontSize="small" />
                 </Button>
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Typography>Total: 20$</Typography>
+                
               </Box>
             </CardContent>
           </Box>
@@ -198,9 +191,7 @@ const CheckoutPage = () => {
               </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Typography>Total: 20$</Typography>
-                <IconButton>
-                  <AddIcon />
-                </IconButton>
+                
               </Box>
             </CardContent>
           </Box>

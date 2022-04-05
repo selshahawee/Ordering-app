@@ -1,23 +1,16 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import Fab from "@mui/material/Fab";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+
 import Box from "@mui/material/Box";
 import RectangleIcon from "@mui/icons-material/Rectangle";
 import Button from "@mui/material/Button";
+import FoodCategories from "./FoodCategories";
 
-import Badge from "@mui/material/Badge";
-import ButtonGroup from "@mui/material/ButtonGroup";
-
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 export default function HomePage() {
  
-  return (
+  return ( 
+    <div>
     <div style={{ backgroundColor: "#303030" }}>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Typography style={{ float: "left" }} variant="h2" color="common.white">
@@ -57,5 +50,9 @@ export default function HomePage() {
         />
       </div>
     </div>
+     <div> 
+        <FoodCategories/>
+      </div>
+      </div>
   );
 }

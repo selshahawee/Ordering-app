@@ -6,7 +6,7 @@ import { Container } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import IconButton from "@mui/material/IconButton";
+
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Badge from "@mui/material/Badge";
@@ -28,7 +28,7 @@ const MenuItems = () => {
           <Grid sm={4}>
             <Card sx={{ display: "flex", m: 1 }}>
               <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <img src={seafoodpizza} />
+                <img src={seafoodpizza} alt="pizaa"/>
                 <CardContent>
                   <Typography component="div" variant="h5">
                     Seafood
@@ -50,7 +50,7 @@ const MenuItems = () => {
                       <RemoveIcon fontSize="small" />
                     </Button>
                     <Badge color="secondary" badgeContent={count}>
-                      {" "}
+                      
                     </Badge>
                     <Button
                       aria-label="increase"
