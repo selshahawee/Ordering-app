@@ -22,7 +22,7 @@ export default function NavBar(props) {
   });
   const styles = useStyles();
   const [open, setOpen] = React.useState(false);
-
+  const { cartItems } = props;
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -72,11 +72,10 @@ export default function NavBar(props) {
       >
         
         <DialogContent>
-          <Cart/>
+              <Cart cartItems={cartItems}/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Checkout</Button>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Add More Items</Button>
         </DialogActions>
       </Dialog>
         </Box>

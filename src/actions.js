@@ -7,15 +7,10 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_FAIL,
-  
+  ORDER_ADD_ITEM,
+  ORDER_REMOVE_ITEM,
+  ORDER_CLEAR,
 } from "./constants";
-
-export const setOrderType = (dispatch, orderType) => {
-  return dispatch({
-    type: ORDER_SET_TYPE,
-    payload: orderType,
-  });
-};
 
 export const listCategories = async (dispatch) => {
   dispatch({ type: CATEGORY_LIST_REQUEST });
@@ -49,5 +44,22 @@ export const listProducts = async (dispatch, categoryName = "") => {
   }
 };
 
+export const addToOrder = (dispatch, item) => {
+  return dispatch({
+    type: ORDER_ADD_ITEM,
+    payload: item,
+  });
+};
 
+export const removeFromOrder = (dispatch, item) => {
+  return dispatch({
+    type: ORDER_REMOVE_ITEM,
+    payload: item,
+  });
+};
 
+export const clearOrder = async (dispatch) => {
+  return dispatch({
+    type: ORDER_CLEAR,
+  });
+};

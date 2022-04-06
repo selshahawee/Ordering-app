@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import FoodCategories from "./FoodCategories";
 
 
-export default function HomePage() {
- 
+export default function HomePage(props) {
+  
   return ( 
     <div>
     <div style={{ backgroundColor: "#303030" }}>

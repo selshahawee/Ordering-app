@@ -1,27 +1,37 @@
-import React from 'react'
-
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+import React from "react";
+import { Store } from "../Store";
+import { clearOrder } from "../actions";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+} from "@material-ui/core";
+import { useContext, useEffect, useState } from "react";
+import { useStyles } from "../styles";
 import seafoodpizza from "../image/seafoodpizza.png";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Divider from "@mui/material/Divider";
-
-import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
 
-export default function Cart() {
+export default function Cart(props) {
+  const styles = useStyles();
+  const { state, dispatch } = useContext(Store);
+  const { orderItems, itemsCount, totalPrice, taxPrice } = state.order;
+  
+  const previewOrderHandler = () => {
+    props.history.push(`/checkout`);
+  };
     const [count, setCount] = React.useState(1);
     return (
       <Grid container sm={12} spacing={2} sx={{ mt: 3 }}>
         
         
 
-      <Grid sm={12}>
+        <Grid sm={12}>
         <Card elevation={0} sx={{ display: "flex", m: 1 }}>
           <Box sx={{ display: "flex", flexDirection: "row" }}>
             <img src={seafoodpizza} alt="pizaa" />
@@ -138,17 +148,31 @@ export default function Cart() {
             </CardContent>
           </Box>
         </Card>
+        
         <Divider variant="middle" style={{ background: 'black' }}
         sx={{ mx: 1.5 }}
         orientation="horizontal"
        
         flexItem />
-        <Typography sx={{ m: 1.5 }}>Subtotal: 60$ .00</Typography>
+         <Box className={[styles.bordered, styles.space]}>
+        My Order - | Tax: ${taxPrice} | Total: ${totalPrice} | Items:{" "}
+        {itemsCount}
+      </Box>
+      
       </Grid>
     </Grid>
     
   )
 }
+
+
+
+
+
+
+
+
+
 
 
 

@@ -13,7 +13,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
 
-const CheckoutPage = () => {
+const CheckoutPage = (props) => {
   const [count, setCount] = React.useState(1);
   return (
     <Grid container spacing={1} sx={{ mt: 3 }}>

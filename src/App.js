@@ -10,9 +10,7 @@ import { useContext } from "react";
 import CheckoutPage from "./pages/CheckoutPage";
 import AdminPage from "./pages/AdminPage";
 import OrderSuccess from "./pages/OrderSuccess";
-
-
-
+import {useState} from "react"
 
 
 
@@ -20,6 +18,7 @@ import OrderSuccess from "./pages/OrderSuccess";
 function App() {
 
   const { state } = useContext(Store);
+  
   return (
     <div className="App">
       <NavBar />
