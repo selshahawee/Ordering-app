@@ -9,7 +9,7 @@ import {
   PRODUCT_LIST_SUCCESS,
   ORDER_REMOVE_ITEM,
   ORDER_ADD_ITEM,
-  ORDER_CLEAR,
+ 
 } from "./constants";
 
 export const Store = createContext();
@@ -27,6 +27,9 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
+
+    
+
     case CATEGORY_LIST_REQUEST:
       return { ...state, categoryList: { loading: true } };
     case CATEGORY_LIST_SUCCESS:
@@ -54,11 +57,11 @@ function reducer(state, action) {
       case ORDER_ADD_ITEM: {
         const item = action.payload;
         const existItem = state.order.orderItems.find(
-          (x) => x.name === item.name
+          (x) => x.id === item.id
         );
         const orderItems = existItem
           ? state.order.orderItems.map((x) =>
-              x.name === existItem.name ? item : x
+              x.id === existItem.id ? item : x
             )
           : [...state.order.orderItems, item];
   
@@ -80,10 +83,11 @@ function reducer(state, action) {
             itemsCount,
           },
         };
-      }
+    }
+      
       case ORDER_REMOVE_ITEM: {
         const orderItems = state.order.orderItems.filter(
-          (x) => x.name !== action.payload.name
+          (x) => x.id !== action.payload.id
         );
         const itemsCount = orderItems.reduce((a, c) => a + c.quantity, 0);
         const itemsPrice = orderItems.reduce(
@@ -105,9 +109,7 @@ function reducer(state, action) {
         };
       }
   
-      case ORDER_CLEAR:
-
-    default:
+      default:
       return state;
     
   }

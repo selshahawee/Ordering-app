@@ -28,7 +28,7 @@ export default function HomePage(props) {
             <Button
               sx={{ px: 2, color: "white" }}
               startIcon={
-                <RectangleIcon fontsize="large" style={{ color: "red" }} />
+                <RectangleIcon fontSize="large" style={{ color: "red" }} />
               }
             >
               Buy 1 Get 2
@@ -36,7 +36,7 @@ export default function HomePage(props) {
             <Button
               sx={{ px: 2, color: "white" }}
               startIcon={
-                <RectangleIcon fontsize="large" style={{ color: "red" }} />
+                <RectangleIcon fontSize="large" style={{ color: "red" }} />
               }
             >
               Order Online Now

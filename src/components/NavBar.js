@@ -12,15 +12,13 @@ import Badge from "@mui/material/Badge";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import { useStyles } from '../styles';  
-import Slide from '@mui/material/Slide';
+
+
 
 
 export default function NavBar(props) {
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
-  const styles = useStyles();
+  
+  
   const [open, setOpen] = React.useState(false);
   const { cartItems } = props;
   const handleClickOpen = () => {
@@ -65,7 +63,7 @@ export default function NavBar(props) {
           </Button>
           <Dialog
         open={open}
-        TransitionComponent={Transition}
+        
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"

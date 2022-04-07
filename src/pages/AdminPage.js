@@ -35,13 +35,13 @@ const AdminPage = () => {
         <Box sx={{ justifyContent: "center", displayDirection: "column" }}>
           <Button  variant="outlined"
             sx={{ px: 4, color: "white", display: "flex", m: 3 }}
-            startIcon={<RectangleIcon fontsize="large" sx={{ color: "red" }} />}
+            startIcon={<RectangleIcon fontSize="large" sx={{ color: "red" }} />}
           >
             Pending Orders
           </Button>
           <Button variant="outlined"
             sx={{ px: 4, color: "white", display: "flex", m: 3 }}
-            startIcon={<RectangleIcon fontsize="large" sx={{ color: "red" }} />}
+            startIcon={<RectangleIcon fontSize="large" sx={{ color: "red" }} />}
           >
             Completed Orders
           </Button>

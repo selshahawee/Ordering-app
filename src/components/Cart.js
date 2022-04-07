@@ -1,6 +1,6 @@
 import React from "react";
-import { Store } from "../Store";
-import { clearOrder } from "../actions";
+import { Store } from "../store";
+
 import {
   Box,
   Button,
@@ -27,11 +27,11 @@ export default function Cart(props) {
   };
     const [count, setCount] = React.useState(1);
     return (
-      <Grid container sm={12} spacing={2} sx={{ mt: 3 }}>
+      <Grid container  spacing={2} sx={{ mt: 3 }}>
         
         
 
-        <Grid sm={12}>
+        <Grid >
         <Card elevation={0} sx={{ display: "flex", m: 1 }}>
           <Box sx={{ display: "flex", flexDirection: "row" }}>
             <img src={seafoodpizza} alt="pizaa" />
@@ -154,7 +154,7 @@ export default function Cart(props) {
         orientation="horizontal"
        
         flexItem />
-         <Box className={[styles.bordered, styles.space]}>
+         <Box >
         My Order - | Tax: ${taxPrice} | Total: ${totalPrice} | Items:{" "}
         {itemsCount}
       </Box>

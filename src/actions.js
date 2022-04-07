@@ -1,6 +1,7 @@
 import Axios from "axios";
 import {
-  ORDER_SET_TYPE,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
   CATEGORY_LIST_REQUEST,
   CATEGORY_LIST_FAIL,
   CATEGORY_LIST_SUCCESS,
@@ -58,8 +59,16 @@ export const removeFromOrder = (dispatch, item) => {
   });
 };
 
-export const clearOrder = async (dispatch) => {
-  return dispatch({
-    type: ORDER_CLEAR,
-  });
-};
+
+export const addToCart = (dispatch, item) => {
+  return dispatch({ type: ADD_TO_CART, payload: item });
+}
+export const removeFromCart = (dispatch, item) => { return dispatch({ type: REMOVE_FROM_CART, payload: item }) }
+
+ 
+
+// export const clearOrder = async (dispatch) => {
+//   return dispatch({
+//     type: ORDER_CLEAR,
+//   });
+// }; 

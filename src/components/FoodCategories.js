@@ -5,13 +5,14 @@ import { styled } from "@mui/material/styles";
 
 import Divider from "@mui/material/Divider";
 import { addToOrder,
-  clearOrder,
+  addToCart,
+  removeFromCart,
   listCategories,
   listProducts,
   removeFromOrder,
 } from "../actions";
 import { useContext, useEffect, useState } from "react";
-import { Store } from "../Store";
+import { Store } from "../store";
 import { Alert } from "@material-ui/lab";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
@@ -43,12 +44,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function FoodCategories(props) {
   const styles = useStyles();
-  const [count, setCount] = React.useState(0);
+  
   const [categoryName, setCategoryName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState({});
-
+ 
   const closeHandler = () => {
     setIsOpen(false);
   };
@@ -57,14 +58,16 @@ export default function FoodCategories(props) {
     setProduct(p);
     setIsOpen(true);
   };
-
+  const handleQty =(e) => setQuantity(quantity - 1)
   const addToOrderHandler = () => {
     addToOrder(dispatch, { ...product, quantity });
-    setIsOpen(false);
+    setQuantity(quantity + 1);
+    // setIsOpen(false);
   };
   const cancelOrRemoveFromOrder = () => {
     removeFromOrder(dispatch, product);
-    setIsOpen(false);
+    handleQty();
+    // setIsOpen(false);
   };
   const { state, dispatch } = useContext(Store);
   const { categories, loading, error } = state.categoryList;
@@ -78,9 +81,6 @@ export default function FoodCategories(props) {
   
   const {
     orderItems,
-    itemsCount,
-    totalPrice,
-    taxPrice,
     
   } = state.order;
 
@@ -100,68 +100,7 @@ export default function FoodCategories(props) {
  
   return (
     <div>
-      <Dialog
-        maxWidth="sm"
-        fullWidth={true}
-        open={isOpen}
-        onClose={closeHandler}
-      >
-        <DialogTitle className={styles.center}>Add {product.name}</DialogTitle>
-        <Box className={[styles.row, styles.center]}>
-          <Button
-            variant="contained"
-            color="primary"
-            disabled={quantity === 1}
-            onClick={(e) => quantity > 1 && setQuantity(quantity - 1)}
-          >
-            <RemoveIcon />
-          </Button>
-          <TextField
-            inputProps={{ className: styles.largeInput }}
-            InputProps={{
-              bar: true,
-              inputProps: {
-                className: styles.largeInput,
-              },
-            }}
-            className={styles.largeNumber}
-            type="number"
-            variant="filled"
-            min={1}
-            value={quantity}
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={(e) => setQuantity(quantity + 1)}
-          >
-            <AddIcon />
-          </Button>
-        </Box>
-        <Box className={[styles.row, styles.around]}>
-          <Button
-            onClick={cancelOrRemoveFromOrder}
-            variant="contained"
-            color="primary"
-            size="large"
-            className={styles.largeButton}
-          >
-            {orderItems.find((x) => x.name === product.name)
-              ? 'Remove From Order'
-              : 'Cancel'}
-          </Button>
-
-          <Button
-            onClick={addToOrderHandler}
-            variant="contained"
-            color="primary"
-            size="large"
-            className={styles.largeButton}
-          >
-            ADD To Order
-          </Button>
-        </Box>
-      </Dialog>
+     
       <Stack
         sx={{ justifyContent: "center", alignItems: "center" }}
         direction="row"
@@ -181,12 +120,12 @@ export default function FoodCategories(props) {
           <Alert severity="error">{error}</Alert>
         ) : (
           <>
-            {categories.map((category) => (
+            {categories.map((category,index) => (
               <Button
                 size="large"
                 onClick={() => categoryClickHandler(category.name)}
-              >
-                <Item p={50} key={category.name}>
+                key={index} >
+                <Item p={50} >
                   <Avatar
                     style={{ width: 50, height: 50 }}
                     alt={category.name}
@@ -219,7 +158,7 @@ export default function FoodCategories(props) {
           ) : (
             products.map((product) => (
               <Card
-                key={product.id}
+                key={product._id}
                 className={styles.card}
                 onClick={() => productClickHandler(product)}
               >
@@ -257,11 +196,13 @@ export default function FoodCategories(props) {
                     </Typography>
                     <Button
                   aria-label="reduce"
-                  onClick={(e) => quantity > 1 && setQuantity(quantity - 1)}
+                  onClick={cancelOrRemoveFromOrder}
                 >
                   <span style={{color:"black"}}>Qty</span>
                   <RemoveIcon fontSize="small" />
-                  
+                    
+                      
+
                 </Button>
                  
                 <Badge color="secondary" badgeContent={quantity}>
@@ -269,8 +210,7 @@ export default function FoodCategories(props) {
                 </Badge>
                 <Button
                       aria-label="increase"
-                      onClick={(e) => setQuantity(quantity + 1)
-                         }
+                      onClick={addToOrderHandler}
                    >
                   <AddIcon fontSize="small" />
                 </Button>

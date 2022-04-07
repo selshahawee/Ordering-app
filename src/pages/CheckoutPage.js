@@ -5,7 +5,7 @@ import seafoodpizza from "../image/seafoodpizza.png";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import IconButton from "@mui/material/IconButton";
+
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Divider from "@mui/material/Divider";
@@ -82,7 +82,7 @@ const CheckoutPage = (props) => {
       <Grid sm={4}>
         <Card elevation={0} sx={{ display: "flex", m: 1 }}>
           <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <img src={seafoodpizza} />
+            <img src={seafoodpizza} alt="pizza" />
             <CardContent>
               <Typography component="div" variant="h5">
                 Seafood
@@ -121,7 +121,7 @@ const CheckoutPage = (props) => {
 
         <Card elevation={0} sx={{ display: "flex", m: 1 }}>
           <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <img src={seafoodpizza} />
+            <img src={seafoodpizza } alt="pizza" />
             <CardContent>
               <Typography component="div" variant="h5">
                 Seafood
@@ -160,7 +160,7 @@ const CheckoutPage = (props) => {
 
         <Card elevation={0} sx={{ display: "flex", m: 1 }}>
           <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <img src={seafoodpizza} />
+            <img src={seafoodpizza} alt="pizza" />
             <CardContent>
               <Typography component="div" variant="h5">
                 Seafood

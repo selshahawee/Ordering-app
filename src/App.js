@@ -1,16 +1,15 @@
 import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import FoodCategories from "./components/FoodCategories";
-import MenuItems from "./components/MenuItems";
+
 import HomePage from "./components/HomePage";
 import { BrowserRouter, Route ,Routes } from "react-router-dom";
-import { Store } from "./Store";
+import { Store } from "./store";
 import { useContext } from "react";
 import CheckoutPage from "./pages/CheckoutPage";
 import AdminPage from "./pages/AdminPage";
 import OrderSuccess from "./pages/OrderSuccess";
-import {useState} from "react"
+
 
 
 
