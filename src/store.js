@@ -71,7 +71,10 @@ function reducer(state, action) {
           0
         );
         const taxPrice = Math.round(0.15 * itemsPrice * 100) / 100;
-        const totalPrice = Math.round((itemsPrice + taxPrice) * 100) / 100;
+      const totalPrice = Math.round((itemsPrice + taxPrice) * 100) / 100;
+      // increment quantity +1 when the product is clicked  and add to order
+       
+    
   
         return {
           ...state,
@@ -84,31 +87,36 @@ function reducer(state, action) {
           },
         };
     }
-      
-      case ORDER_REMOVE_ITEM: {
-        const orderItems = state.order.orderItems.filter(
-          (x) => x.id !== action.payload.id
-        );
-        const itemsCount = orderItems.reduce((a, c) => a + c.quantity, 0);
-        const itemsPrice = orderItems.reduce(
-          (a, c) => a + c.quantity * c.price,
-          0
-        );
-        const taxPrice = Math.round(0.15 * itemsPrice * 100) / 100;
-        const totalPrice = Math.round((itemsPrice + taxPrice) * 100) / 100;
-  
-        return {
-          ...state,
-          order: {
-            ...state.order,
-            orderItems,
-            taxPrice,
-            totalPrice,
-            itemsCount,
-          },
-        };
-      }
-  
+      //  decrement quantity and price of an item in the order and remove it if quantity is 0 and adjust total price 
+    case ORDER_REMOVE_ITEM: {
+      const item = action.payload;
+      const existItem = state.order.orderItems.find(
+        (x) => x.id === item.id
+      );
+      const orderItems = existItem
+        ? state.order.orderItems.map((x) =>
+          x.id === existItem.id ? item : x
+        )
+        : [...state.order.orderItems, item];
+      const itemsCount = orderItems.reduce((a, c) => a + c.quantity, 0);
+      const itemsPrice = orderItems.reduce(
+        (a, c) => a + c.quantity * c.price,
+        0
+      );
+        
+      const taxPrice = Math.round(0.15 * itemsPrice * 100) / 100;
+      const totalPrice = Math.round((itemsPrice + taxPrice) * 100) / 100;
+      return {
+        ...state,
+        order: {
+          ...state.order,
+          orderItems,
+          taxPrice,
+          totalPrice,
+          itemsCount,
+        },
+      };
+    }
       default:
       return state;
     

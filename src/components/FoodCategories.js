@@ -50,6 +50,16 @@ export default function FoodCategories(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [product, setProduct] = useState({});
  
+// function to setQuantity to +1 or -1 by id of product and setState to quantity
+  const handleQuantity = (id) => {
+    if (id === "add") {
+      setQuantity(quantity + 1);
+    } else {
+      setQuantity(quantity - 1);
+    }
+  }
+
+
   const closeHandler = () => {
     setIsOpen(false);
   };
@@ -58,15 +68,15 @@ export default function FoodCategories(props) {
     setProduct(p);
     setIsOpen(true);
   };
-  const handleQty =(e) => setQuantity(quantity - 1)
+
   const addToOrderHandler = () => {
     addToOrder(dispatch, { ...product, quantity });
-    setQuantity(quantity + 1);
+    handleQuantity("add");
     // setIsOpen(false);
   };
-  const cancelOrRemoveFromOrder = () => {
-    removeFromOrder(dispatch, product);
-    handleQty();
+  const cancelOrRemoveFromOrder = () => { // remove one item and adujust quantity and price
+    removeFromOrder(dispatch, { ...product, quantity });
+   handleQuantity("remove");
     // setIsOpen(false);
   };
   const { state, dispatch } = useContext(Store);
@@ -81,7 +91,7 @@ export default function FoodCategories(props) {
   
   const {
     orderItems,
-    
+    itemsCount,
   } = state.order;
 
   useEffect(() => {
@@ -205,10 +215,10 @@ export default function FoodCategories(props) {
 
                 </Button>
                  
-                <Badge color="secondary" badgeContent={quantity}>
+                <Badge color="secondary" badgeContent={itemsCount}>
                   
                 </Badge>
-                <Button
+                    <Button  style={{marginLeft:10}}
                       aria-label="increase"
                       onClick={addToOrderHandler}
                    >
