@@ -80,6 +80,7 @@ const data = {
       price: 12,
       calorie: 320,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
 
     {
@@ -88,6 +89,7 @@ const data = {
       price: 15,
       calorie: 200,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Pizza",
@@ -95,6 +97,7 @@ const data = {
       price: 20,
       calorie: 410,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Pizza",
@@ -102,6 +105,7 @@ const data = {
       price: 21,
       calorie: 200,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Pizza",
@@ -109,6 +113,7 @@ const data = {
       price: 30,
       calorie: 410,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Pizza",
@@ -116,6 +121,7 @@ const data = {
       price: 10,
       calorie: 320,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Pizza",
@@ -123,6 +129,7 @@ const data = {
       price: 40,
       calorie: 200,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Pizza",
@@ -130,6 +137,7 @@ const data = {
       price: 10,
       calorie: 410,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Pizza",
@@ -137,6 +145,7 @@ const data = {
       price: 20,
       calorie: 320,
       image: "/images/seafoodpizza.png",
+      orderQty: 0,
     },
     {
       category: "Burgers",
@@ -144,6 +153,7 @@ const data = {
       price: 1.9,
       calorie: 200,
       image: "/images/t-mcdonalds-Big-Mac.jpg",
+      orderQty: 0,
     },
     {
       category: "Burgers",
@@ -151,6 +161,7 @@ const data = {
       price: 1.5,
       calorie: 410,
       image: "/images/t-mcdonalds-Hamburger.jpg",
+      orderQty: 0,
     },
     {
       category: "Burgers",
@@ -158,6 +169,7 @@ const data = {
       price: 1.9,
       calorie: 200,
       image: "/images/t-mcdonalds-Big-Mac.jpg",
+      orderQty: 0,
     },
     {
       category: "Burgers",
@@ -165,6 +177,7 @@ const data = {
       price: 1.5,
       calorie: 410,
       image: "/images/t-mcdonalds-Hamburger.jpg",
+      orderQty: 0,
     },
     {
       category: "Burgers",
@@ -172,6 +185,7 @@ const data = {
       price: 3,
       calorie: 320,
       image: "/images/t-mcdonalds-McDouble.jpg",
+      orderQty: 0,
     },
 
     {
@@ -180,6 +194,7 @@ const data = {
       price: 1.9,
       calorie: 200,
       image: "/images/t-mcdonalds-Big-Mac.jpg",
+      orderQty: 0,
     },
     {
       category: "Burgers",
@@ -187,6 +202,7 @@ const data = {
       price: 1.5,
       calorie: 410,
       image: "/images/t-mcdonalds-Hamburger.jpg",
+      orderQty: 0,
     },
     {
       category: "Burgers",
@@ -194,6 +210,7 @@ const data = {
       price: 3,
       calorie: 320,
       image: "/images/t-mcdonalds-McDouble.jpg",
+      orderQty: 0,
     },
     {
       category: "Crepe",
@@ -202,6 +219,7 @@ const data = {
       calorie: 90,
       image:
         "/images/crepe3.png",
+        orderQty: 0,
     },
     {
       category: "Crepe",
@@ -209,6 +227,7 @@ const data = {
       price: 1.9,
       calorie: 90,
       image: "/images/crepe3.png",
+      orderQty: 0,
     },
     {
       category: "Crepe",
@@ -217,6 +236,7 @@ const data = {
       calorie: 90,
       image:
         "/images/crepe3.png",
+        orderQty: 0,
     },
     {
       category: "Crepe",
@@ -224,6 +244,7 @@ const data = {
       price: 1.5,
       calorie: 120,
       image: "/images/crepe3.png",
+      orderQty: 0,
     },
     {
       category: "Crepe",
@@ -231,13 +252,15 @@ const data = {
       price: 3,
       calorie: 430,
       image: "/images/crepe3.png",
+      orderQty: 0,
     },
     {
       category: "Crepe",
       name: "Strawberry  & Chocolate",
       price: 1.9,
       calorie: 90,
-      image:"/images/crepe3.png",
+      image: "/images/crepe3.png",
+      orderQty: 0,
     },
     {
       category: "Crepe",
@@ -245,6 +268,7 @@ const data = {
       price: 1.5,
       calorie: 120,
       image: "/images/crepe3.png",
+      orderQty: 0,
     },
     {
       category: "Crepe",
@@ -252,6 +276,7 @@ const data = {
       price: 3,
       calorie: 430,
       image: "/images/crepe3.png",
+      orderQty: 0,
     },
 
     {
@@ -260,6 +285,7 @@ const data = {
       calorie: "100",
       price: "1",
       image: "/images/cocacola.png",
+      orderQty: 0,
     },
     {
       category: "Drinks",
@@ -267,6 +293,7 @@ const data = {
       price: 1.5,
       calorie: 360,
       image: "/images/cocacola.png",
+      orderQty: 0,
     },
     {
       category: "Drinks",
@@ -274,6 +301,7 @@ const data = {
       price: 2,
       calorie: 170,
       image: "/images/cocacola.png",
+      orderQty: 0,
     },
     {
       category: "Drinks",
@@ -281,6 +309,7 @@ const data = {
       calorie: "100",
       price: "1",
       image: "/images/cocacola.png",
+      orderQty: 0,
     },
     {
       category: "Drinks",
@@ -288,6 +317,7 @@ const data = {
       price: 1.5,
       calorie: 360,
       image: "/images/cocacola.png",
+      orderQty: 0,
     },
     {
       category: "Drinks",
@@ -295,6 +325,7 @@ const data = {
       price: 2,
       calorie: 170,
       image: "/images/cocacola.png",
+      orderQty: 0,
     },
   ],
 };

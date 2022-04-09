@@ -1,7 +1,7 @@
 import Axios from "axios";
 import {
-  ADD_TO_CART,
-  REMOVE_FROM_CART,
+  
+
   CATEGORY_LIST_REQUEST,
   CATEGORY_LIST_FAIL,
   CATEGORY_LIST_SUCCESS,
@@ -10,7 +10,7 @@ import {
   PRODUCT_LIST_FAIL,
   ORDER_ADD_ITEM,
   ORDER_REMOVE_ITEM,
-  ORDER_CLEAR,
+ 
 } from "./constants";
 
 export const listCategories = async (dispatch) => {
@@ -60,12 +60,12 @@ export const removeFromOrder = (dispatch, item) => {
 };
 
 
-export const addToCart = (dispatch, item) => {
-  return dispatch({ type: ADD_TO_CART, payload: item });
+export const addToCart = (dispatch, id) => {
+  return dispatch({ type: "ADD_TO_CART", payload: id });
 }
-export const removeFromCart = (dispatch, item) => { return dispatch({ type: REMOVE_FROM_CART, payload: item }) }
+export const removeFromCart = (dispatch, id) => { return dispatch({ type: "REMOVE_FROM_CART", payload: id }) }
 
- 
+
 
 // export const clearOrder = async (dispatch) => {
 //   return dispatch({

@@ -4,9 +4,8 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 
 import Divider from "@mui/material/Divider";
-import { addToOrder,
-  addToCart,
-  removeFromCart,
+import {
+  addToOrder,
   listCategories,
   listProducts,
   removeFromOrder,
@@ -44,39 +43,22 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function FoodCategories(props) {
   const styles = useStyles();
-  
+
   const [categoryName, setCategoryName] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [isOpen, setIsOpen] = useState(false);
-  const [product, setProduct] = useState({});
- 
-// function to setQuantity to +1 or -1 by id of product and setState to quantity
-  const handleQuantity = (id) => {
-    if (id === "add") {
-      setQuantity(quantity + 1);
-    } else {
-      setQuantity(quantity - 1);
-    }
-  }
+  const [product, setProduct] = useState(null);
 
-
-  const closeHandler = () => {
-    setIsOpen(false);
-  };
-
-  const productClickHandler = (p) => {
-    setProduct(p);
-    setIsOpen(true);
-  };
+  // function to setQuantity to +1 or -1 by id of product and setState to quantity
 
   const addToOrderHandler = () => {
     addToOrder(dispatch, { ...product, quantity });
-    handleQuantity("add");
+
     // setIsOpen(false);
   };
-  const cancelOrRemoveFromOrder = () => { // remove one item and adujust quantity and price
+  const cancelOrRemoveFromOrder = () => {
+    // remove one item and adujust quantity and price
     removeFromOrder(dispatch, { ...product, quantity });
-   handleQuantity("remove");
+
     // setIsOpen(false);
   };
   const { state, dispatch } = useContext(Store);
@@ -86,13 +68,8 @@ export default function FoodCategories(props) {
     loading: loadingProducts,
     error: errorProducts,
   } = state.productList;
-  
-  
-  
-  const {
-    orderItems,
-    itemsCount,
-  } = state.order;
+
+  const { orderItems, itemsCount } = state.order;
 
   useEffect(() => {
     if (!categories) {
@@ -106,11 +83,9 @@ export default function FoodCategories(props) {
     setCategoryName(name);
     listProducts(dispatch, categoryName);
   };
- 
- 
+
   return (
     <div>
-     
       <Stack
         sx={{ justifyContent: "center", alignItems: "center" }}
         direction="row"
@@ -130,12 +105,13 @@ export default function FoodCategories(props) {
           <Alert severity="error">{error}</Alert>
         ) : (
           <>
-            {categories.map((category,index) => (
+            {categories.map((category, index) => (
               <Button
                 size="large"
                 onClick={() => categoryClickHandler(category.name)}
-                key={index} >
-                <Item p={50} >
+                key={index}
+              >
+                <Item p={50}>
                   <Avatar
                     style={{ width: 50, height: 50 }}
                     alt={category.name}
@@ -170,7 +146,7 @@ export default function FoodCategories(props) {
               <Card
                 key={product._id}
                 className={styles.card}
-                onClick={() => productClickHandler(product)}
+                onClick={() => {}}
               >
                 <CardActionArea>
                   <CardMedia
@@ -205,32 +181,24 @@ export default function FoodCategories(props) {
                       ${product.price}
                     </Typography>
                     <Button
-                  aria-label="reduce"
-                  onClick={cancelOrRemoveFromOrder}
-                >
-                  <span style={{color:"black"}}>Qty</span>
-                  <RemoveIcon fontSize="small" />
-                    
-                      
+                      aria-label="reduce"
+                      onClick={cancelOrRemoveFromOrder}
+                    >
+                      <span style={{ color: "black" }}>Qty</span>
+                      <RemoveIcon fontSize="small" />
+                    </Button>
 
-                </Button>
-                 
-                <Badge color="secondary" badgeContent={itemsCount}>
-                  
-                </Badge>
-                    <Button  style={{marginLeft:10}}
+                    <Badge color="secondary" badgeContent={itemsCount}></Badge>
+                    <Button
+                      style={{ marginLeft: 10 }}
                       aria-label="increase"
                       onClick={addToOrderHandler}
-                   >
-                  <AddIcon fontSize="small" />
-                </Button>
-                    
+                    >
+                      <AddIcon fontSize="small" />
+                    </Button>
                   </Box>
                 </CardContent>
-               
-           
               </Card>
-              
             ))
           )}
         </Grid>
