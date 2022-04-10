@@ -3,24 +3,30 @@ const data = {
     {
       name: "Popular",
       image: "/images/seafoodpizza.png",
+      id:1
     },
 
     {
       name: "Pizza",
       image: "/images/pizza1.png",
+      id:2
     },
+  
     {
       name: "Burgers",
       image: "/images/burger.png",
+      id:3
     },
     {
       name: "Crepe",
       image: "/images/crepe3.png",
+      id:4
     },
 
     {
       name: "Drinks",
       image: "/images/beverages.jpeg",
+      id:5
     },
   ],
   products: [

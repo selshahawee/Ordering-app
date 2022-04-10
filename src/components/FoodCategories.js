@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function FoodCategories({ setCurrentCategory }) {
+function FoodCategories({ setSelectedCategory }) {
     const dispatch = useDispatch();
     const categories = useSelector((state) => state.app.categories);
   
@@ -40,15 +40,19 @@ function FoodCategories({ setCurrentCategory }) {
         spacing={3}
         p={5}
       >
+        
         {categories?.map((category, index) => (
-          <Button size="large" key={index} onClick={() => setCurrentCategory(category.Name)}>
-            <Item p={50}>
+          
+          <Button size="large" key={index} onClick={() => setSelectedCategory(category.name)}>
+              
+              <Item p={50}>
+                
               <Avatar
                 style={{ width: 50, height: 50 }}
                 alt={category.name}
                 src={category.image}
               >
-                {" "}
+                
               </Avatar>{" "}
               {category.name}
             </Item>{" "}

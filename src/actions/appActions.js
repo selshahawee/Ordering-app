@@ -15,9 +15,9 @@ export const getCategories = () => async (dispatch) => {
 
 export const getProducts = () => async (dispatch) => { 
     try {
-        console.log("getProducts");
+        
         const { data } = await api.getProducts();
-        console.log({data});
+        
         dispatch({
             type: "FETCH_PRODUCTS",
             payload: data.products,

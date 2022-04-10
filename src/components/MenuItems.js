@@ -20,8 +20,7 @@ import {
 import { useEffect } from "react";
 import { getProducts } from "../actions/appActions";
 
-
-const MenuItems = () => {
+const MenuItems = ({ selectedCategory}) => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.app.products);
@@ -31,7 +30,7 @@ const MenuItems = () => {
   }, []);
   return (
     <Grid container spacing={1} style={{ justifyContent: "center" }}>
-      {products.map((product) => (
+      {products?.filter(product=>product.category === selectedCategory).map((product) => ( 
         <Card key={product._id} className={styles.card} onClick={() => {}}>
           <CardActionArea>
             <CardMedia
@@ -57,13 +56,30 @@ const MenuItems = () => {
               <Typography variant="body2" color="textPrimary" component="p">
                 ${product.price}
               </Typography>
-              <Button aria-label="reduce">
-                <span style={{ color: "black" }}>Qty</span>
+              <Button
+                aria-label="reduce"
+                onClick={() => {
+                  dispatch({
+                    type: "DECREMENT_QUANTITY",
+                    payload: product.id,
+                  });
+                }}
+              >
+                <span style={{ color: "black" }}></span>
                 <RemoveIcon fontSize="small" />
               </Button>
 
-              <Badge color="secondary" badgeContent={0}></Badge>
-              <Button style={{ marginLeft: 10 }} aria-label="increase">
+              <Badge color="secondary" badgeContent={product.quantity}></Badge>
+              <Button
+                style={{ marginLeft: 10 }}
+                aria-label="increase"
+                onClick={() => {
+                  dispatch({
+                    type: "INCREMENT_QUANTITY",
+                    payload: product.id,
+                  });
+                }}
+              >
                 <AddIcon fontSize="small" />
               </Button>
             </Box>
