@@ -4,10 +4,10 @@ import React from "react";
 import Box from "@mui/material/Box";
 import RectangleIcon from "@mui/icons-material/Rectangle";
 import Button from "@mui/material/Button";
-import FoodCategories from "./FoodCategories";
 
 
-export default function HomePage(props) {
+
+export default function Header(props) {
   
   return ( 
     <div>
@@ -50,9 +50,7 @@ export default function HomePage(props) {
         />
       </div>
     </div>
-     <div> 
-        <FoodCategories/>
-      </div>
+    
       </div>
   );
 }

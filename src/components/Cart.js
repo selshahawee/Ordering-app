@@ -1,5 +1,5 @@
 import React from "react";
-import { Store } from "../store";
+
 
 import {
   Box,
@@ -9,7 +9,7 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-import { useContext, useEffect, useState } from "react";
+import {  useState } from "react";
 import { useStyles } from "../styles";
 import seafoodpizza from "../image/seafoodpizza.png";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -19,13 +19,9 @@ import Badge from "@mui/material/Badge";
 
 export default function Cart(props) {
   const styles = useStyles();
-  const { state, dispatch } = useContext(Store);
-  const { orderItems, itemsCount, totalPrice, taxPrice } = state.order;
-  
-  const previewOrderHandler = () => {
-    props.history.push(`/checkout`);
-  };
-    const [count, setCount] = React.useState(1);
+const [count , setCount] = useState(0);
+
+
     return (
       <Grid container  spacing={2} sx={{ mt: 3 }}>
         
@@ -42,9 +38,7 @@ export default function Cart(props) {
               <Box sx={{ display: "flex", alignItems: "center" }}>
               <Button
                   aria-label="reduce"
-                  onClick={() => {
-                    setCount(Math.max(count - 1, 0));
-                  }}
+                 
                 >
                   <span style={{color:"black"}}>Qty</span>
                   <RemoveIcon fontSize="small" />
@@ -56,9 +50,7 @@ export default function Cart(props) {
                 </Badge>
                 <Button
                   aria-label="increase"
-                  onClick={() => {
-                    setCount(count + 1);
-                  }}
+                 
                 >
                   <AddIcon fontSize="small" />
                 </Button>
@@ -155,8 +147,8 @@ export default function Cart(props) {
        
         flexItem />
          <Box >
-        My Order - | Tax: ${taxPrice} | Total: ${totalPrice} | Items:{" "}
-        {itemsCount}
+        My Order - | Tax: $ | Total: $ | Items:{" "}
+        items count
       </Box>
       
       </Grid>

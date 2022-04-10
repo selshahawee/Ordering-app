@@ -39,6 +39,16 @@ const appReducer = (state = initialState, action) => {
                   };
                 }),
           }
+    // case filter products by category name and return products in that category in the menu component.
+    case "FILTER_PRODUCTS":
+      return {
+        ...state,
+        products: state.products.filter((product) => {
+          return product.Category === action.payload;
+        }),
+      };
+    
+    
     default:
       return state;
   }

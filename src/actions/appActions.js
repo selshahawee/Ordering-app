@@ -28,3 +28,16 @@ export const getProducts = () => async (dispatch) => {
         console.log({ error });
     }
 }
+
+export  const filterProducts = (category) => async (dispatch) => {
+    try {
+    console.log("filterProducts"); 
+      dispatch({
+        type: "FILTER_PRODUCTS",
+        payload: category,
+      }
+      );
+    } catch (error) {
+      console.log({ error });
+    }
+  }

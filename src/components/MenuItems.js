@@ -1,276 +1,76 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import seafoodpizza from "../image/seafoodpizza.png";
-import { Container } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-
-import RemoveIcon from "@mui/icons-material/Remove";
+import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@mui/icons-material/Add";
-import Badge from "@mui/material/Badge";
-import Button from "@mui/material/Button";
-
+import RemoveIcon from "@mui/icons-material/Remove";
+import { styled } from "@mui/material/styles";
+import { useStyles } from "../styles";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Box,
+  Button,
+  Badge,
+  CardActionArea,
+  IconButton,
+  Container,
+  Grid,
+} from "@mui/material";
+import { useEffect } from "react";
+import { getProducts } from "../actions/appActions";
 
 
 const MenuItems = () => {
-  const [count, setCount] = React.useState(1);
+  const styles = useStyles();
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.app.products);
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
   return (
-    <Box sx={{ mt: 3 }}>
-      <Container maxWidth="lg">
-        <Grid
-          container
-          spacing={1}
-          justify="center"
-          sx={{ alignItems: "center" }}
-        >
-          <Grid sm={4}>
-            <Card sx={{ display: "flex", m: 1 }}>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <img src={seafoodpizza} alt="pizaa"/>
-                <CardContent>
-                  <Typography component="div" variant="h5">
-                    Seafood
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Shrimp, Squid, Pineapple
-                  </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Button
-                      aria-label="reduce"
-                      onClick={() => {
-                        setCount(Math.max(count - 1, 0));
-                      }}
-                    >
-                      <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Badge color="secondary" badgeContent={count}>
-                      
-                    </Badge>
-                    <Button
-                      aria-label="increase"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <AddIcon fontSize="small" />
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Box>
-            </Card>
-          </Grid>
+    <Grid container spacing={1} style={{ justifyContent: "center" }}>
+      {products.map((product) => (
+        <Card key={product._id} className={styles.card} onClick={() => {}}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt={product.name}
+              image={product.image}
+              className={styles.media}
+            />
+          </CardActionArea>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="body2"
+              color="textPrimary"
+              component="p"
+            >
+              {product.name}
+            </Typography>
+            <Box className={styles.cardFooter}>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {product.calorie} Cal
+              </Typography>
+              <Typography variant="body2" color="textPrimary" component="p">
+                ${product.price}
+              </Typography>
+              <Button aria-label="reduce">
+                <span style={{ color: "black" }}>Qty</span>
+                <RemoveIcon fontSize="small" />
+              </Button>
 
-          <Grid sm={4}>
-            <Card sx={{ display: "flex", m: 1 }}>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <img src={seafoodpizza} />
-                <CardContent>
-                  <Typography component="div" variant="h5">
-                    Seafood
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Shrimp, Squid, Pineapple
-                  </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Button
-                      aria-label="reduce"
-                      onClick={() => {
-                        setCount(Math.max(count - 1, 0));
-                      }}
-                    >
-                      <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Badge color="secondary" badgeContent={count}>
-                      {" "}
-                    </Badge>
-                    <Button
-                      aria-label="increase"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <AddIcon fontSize="small" />
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Box>
-            </Card>
-          </Grid>
-
-          <Grid sm={4}>
-            <Card sx={{ display: "flex", m: 1 }}>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <img src={seafoodpizza} />
-                <CardContent>
-                  <Typography component="div" variant="h5">
-                    Seafood
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Shrimp, Squid, Pineapple
-                  </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Button
-                      aria-label="reduce"
-                      onClick={() => {
-                        setCount(Math.max(count - 1, 0));
-                      }}
-                    >
-                      <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Badge color="secondary" badgeContent={count}>
-                      {" "}
-                    </Badge>
-                    <Button
-                      aria-label="increase"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <AddIcon fontSize="small" />
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Box>
-            </Card>
-          </Grid>
-
-          <Grid sm={4}>
-            <Card sx={{ display: "flex", m: 1 }}>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <img src={seafoodpizza} />
-                <CardContent>
-                  <Typography component="div" variant="h5">
-                    Seafood
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Shrimp, Squid, Pineapple
-                  </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Button
-                      aria-label="reduce"
-                      onClick={() => {
-                        setCount(Math.max(count - 1, 0));
-                      }}
-                    >
-                      <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Badge color="secondary" badgeContent={count}>
-                      {" "}
-                    </Badge>
-                    <Button
-                      aria-label="increase"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <AddIcon fontSize="small" />
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Box>
-            </Card>
-          </Grid>
-          <Grid sm={4}>
-            <Card sx={{ display: "flex", m: 1 }}>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <img src={seafoodpizza} />
-                <CardContent>
-                  <Typography component="div" variant="h5">
-                    Seafood
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Shrimp, Squid, Pineapple
-                  </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Button
-                      aria-label="reduce"
-                      onClick={() => {
-                        setCount(Math.max(count - 1, 0));
-                      }}
-                    >
-                      <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Badge color="secondary" badgeContent={count}>
-                      {" "}
-                    </Badge>
-                    <Button
-                      aria-label="increase"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <AddIcon fontSize="small" />
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Box>
-            </Card>
-          </Grid>
-          <Grid sm={4}>
-            <Card sx={{ display: "flex", m: 1 }}>
-              <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <img src={seafoodpizza} />
-                <CardContent>
-                  <Typography component="div" variant="h5">
-                    Seafood
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    component="div"
-                  >
-                    Shrimp, Squid, Pineapple
-                  </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Button
-                      aria-label="reduce"
-                      onClick={() => {
-                        setCount(Math.max(count - 1, 0));
-                      }}
-                    >
-                      <RemoveIcon fontSize="small" />
-                    </Button>
-                    <Badge color="secondary" badgeContent={count}>
-                      {" "}
-                    </Badge>
-                    <Button
-                      aria-label="increase"
-                      onClick={() => {
-                        setCount(count + 1);
-                      }}
-                    >
-                      <AddIcon fontSize="small" />
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Box>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+              <Badge color="secondary" badgeContent={0}></Badge>
+              <Button style={{ marginLeft: 10 }} aria-label="increase">
+                <AddIcon fontSize="small" />
+              </Button>
+            </Box>
+          </CardContent>
+        </Card>
+      ))}
+    </Grid>
   );
 };
 
