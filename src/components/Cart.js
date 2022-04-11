@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import {
   Box,
   Button,
@@ -8,12 +8,11 @@ import {
   Grid,
   Typography,
   Avatar,
-  CardActionArea,
-  CardMedia,
+ 
   IconButton,
 } from "@material-ui/core";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState } from "react";
+
 import { useStyles } from "../styles";
 import { useSelector , useDispatch} from "react-redux";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -48,43 +47,64 @@ export default function Cart(product) {
     dispatch(decrementQuantity(id));
   };
 
-  const handleRemove = (id) => {
-    dispatch(deleteFromCart(id));
-  }
+  // const handleRemove = (id) => {
+  //   dispatch(deleteFromCart(id));
+  // }
 
 
 
   return (
-    <Grid  md={10} >
+    <Grid >
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
         {cartItems.map((product) => (
+          
           <Card elevation={0} sx={{ display: "flex", m: 1 }}>
-            <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <Avatar src={product.image} />
-              <CardContent>
+
+          
+            <CardContent>
+              <Grid container spacing={1}>
+                <Grid item xs={6} sm={6}>
+                <img src={product.image} alt="pizza"  width={"50%"}/> 
+                </Grid>
+                <Grid item container xs={6} sm={6}>
+                  <Grid item xs={12} sm={12}>
                 <Typography component="div" variant="h5">
                   {product.name}
                 </Typography>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Typography>Qty: {product.quantity}</Typography>
+                </Grid>
+                <Grid item container xs={12} sm={12} alignItems="center" >
+                    <Typography>Qty:</Typography>
                   <IconButton onClick={()=>dispatch(handleDecrementQuantity(product.id))}>
                     <RemoveIcon />
                   </IconButton>
+              
+                  <Badge color="secondary" badgeContent={product.quantity}></Badge>
+
                   <IconButton onClick={()=>dispatch(handleIncrementQuantity(product.id))}>
                     <AddIcon />
-                  </IconButton>
-                </Box>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Typography>Total: $ {product.price*product.quantity}</Typography>
-                  <IconButton >
+                    </IconButton>
+                    <IconButton   >
                     <DeleteIcon />
                   </IconButton>
-                </Box>
+                     </Grid>
+                  </Grid>
+                </Grid>
+              <Grid container alignItems="center">
+                <Grid item xs={6}>
+                  <Typography>Total: $ {product.price * product.quantity}</Typography>
+                </Grid>
+                
+                  
+                
+                </Grid>
               </CardContent>
-            </Box>
+           
           </Card>
         ))}
-
+        </Grid>
         <Divider variant="middle" />
+        <Grid item xs={12}>
         <Box
           sx={{
             display: "flex",
@@ -106,7 +126,9 @@ export default function Cart(product) {
             Check Out
           </Button>
           
-        </Box>
+          </Box>
+            </Grid>
+          </Grid>
       </Grid>
   );
 }

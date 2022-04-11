@@ -17,14 +17,15 @@ const Menu = () => {
 
   return (
     <Grid container spacing={3} justifyContent="center">
-      <Grid item sx={4}>
-        <FoodCategories setSelectedCategory={setSelectedCategory} />
-      </Grid>
 
       
+        <FoodCategories setSelectedCategory={setSelectedCategory} />
+      
 
-      <MenuItems selectedCategory={selectedCategory}  />
-    </Grid>
+      
+      
+        <MenuItems selectedCategory={selectedCategory} />
+        </Grid>
   );
 };
 

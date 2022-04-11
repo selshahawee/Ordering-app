@@ -42,19 +42,13 @@ const appReducer = (state = initialState, action) => {
         }),
       };
     // delete and item from cart and update the quantity in the products array
-    case "DELETE_FROM_CART":
-      return {
-        ...state,
-        products: state.products.map((product) => {
-          if (product.id !== action.payload.id) return product;
-          return {
-            ...product,
-            quantity: 0,
-          };
-        }),
-      };
-    
-   
+    // case "DELETE_FROM_CART":
+      
+    //   const cartItems = state.products.filter(product => product.quantity > 0)
+    //   return {
+    //    state,
+    //   }
+     
      
     
 
