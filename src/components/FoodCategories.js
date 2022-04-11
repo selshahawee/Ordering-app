@@ -18,7 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function FoodCategories({ setSelectedCategory }) {
     const dispatch = useDispatch();
-    const categories = useSelector((state) => state.app.categories);
+    const sherif = useSelector((state) => state.app.categories);
   
     useEffect(() => {
       dispatch(getCategories());
@@ -41,7 +41,7 @@ function FoodCategories({ setSelectedCategory }) {
         p={5}
       >
         
-        {categories?.map((category, index) => (
+        {sherif?.map((category, index) => (
           
           <Button size="large" key={index} onClick={() => setSelectedCategory(category.name)}>
               

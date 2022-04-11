@@ -55,10 +55,8 @@ title: {
 space: {
   padding: 10,
 },
-media: { width: 200 },
-largeButton: {
-  width: 250,
-},
+media: { width: 200 ,display: 'flex' , objectFit: "contain" },
+
 largeInput: {
   width: '60px!important',
   padding: '0!important',

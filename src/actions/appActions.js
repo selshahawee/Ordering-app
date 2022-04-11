@@ -13,31 +13,45 @@ export const getCategories = () => async (dispatch) => {
   }
 };
 
-export const getProducts = () => async (dispatch) => { 
-    try {
-        
-        const { data } = await api.getProducts();
-        
-        dispatch({
-            type: "FETCH_PRODUCTS",
-            payload: data.products,
-        }  
-        );
-        
-    } catch (error) {
-        console.log({ error });
-    }
-}
+export const getProducts = () => async (dispatch) => {
+  try {
+    const { data } = await api.getProducts();
 
-export  const filterProducts = (category) => async (dispatch) => {
-    try {
-    console.log("filterProducts"); 
-      dispatch({
-        type: "FILTER_PRODUCTS",
-        payload: category,
-      }
-      );
-    } catch (error) {
-      console.log({ error });
-    }
+    dispatch({
+      type: "FETCH_PRODUCTS",
+      payload: data.products,
+    });
+  } catch (error) {
+    console.log({ error });
   }
+};
+
+export const incrementQuantity = (id) => {
+  console.log({ id })
+  console.log("incrementQuantity");
+  return {
+    type: "INCREMENT_QUANTITY",
+    payload: {
+      id,
+    },
+  };
+};
+
+export const decrementQuantity = (id) => {
+  return {
+    type: "DECREMENT_QUANTITY",
+    payload: {
+      id,
+    },
+  };
+};
+
+// delete from cart
+export const deleteFromCart = (id) => {
+  return {
+    type: "DELETE_FROM_CART",
+    payload: {
+      id,
+    },
+  };
+}
