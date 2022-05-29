@@ -11,4 +11,6 @@ body ,html{
 }
 
 
-.media { width: 150px; height: 150px;  object-Fit: contain ;}
+
+
+.sidebar{ maxHeight: 100%;}

@@ -1,20 +1,90 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import seafoodpizza from "../image/seafoodpizza.png";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  IconButton,
+} from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
+import { useFormik } from "formik";
+
+import * as api from "../api";
+
+import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+
 import Badge from "@mui/material/Badge";
+import {
+  incrementQuantity,
+  decrementQuantity,
+  deleteFromCart,
+} from "../actions/appActions";
 
 const CheckoutPage = (props) => {
-  const [count, setCount] = React.useState(1);
+  const cartItems = useSelector((state) =>
+    state.app.products?.filter((product) => product.quantity > 0)
+  );
+
+
+
+ 
+
+  const total = sum(cartItems);
+
+  function sum(arr) {
+    let count = 0;
+    for (const product of arr) {
+      count = count + product.price * product.quantity;
+    }
+    return count;
+  }
+
+  const dispatch = useDispatch();
+  const handleIncrementQuantity = (id) => {
+    dispatch(incrementQuantity(id));
+  };
+
+  const handleDecrementQuantity = (id) => {
+    dispatch(decrementQuantity(id));
+  };
+
+  const handleRemove = (id) => {
+    dispatch(deleteFromCart(id));
+  };
+
+  const handleCancel = () => {
+		navigate('/');
+	};
+
+  const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      mobile: "",
+      address: "",
+      city: "",
+      items: cartItems,
+    },
+    onSubmit: async (values) => {
+      formik.resetForm();
+
+      const response = await api.addOrder(values);
+
+      const orderId = response.data[0].id;
+
+      navigate(`/ordersuccess/${orderId}`);
+    },
+  });
+
   return (
     <Grid container spacing={1} sx={{ mt: 3 }}>
       <Grid sm={7}>
@@ -30,21 +100,33 @@ const CheckoutPage = (props) => {
             variant="standard"
             sx={{ width: "70%", m: 2, mx: 5 }}
             label="Name"
+            name="name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
           ></TextField>
           <TextField
             variant="standard"
             sx={{ width: "40%", m: 2, mx: 5 }}
             label="Mobile"
+            name="mobile"
+            onChange={formik.handleChange}
+            value={formik.values.mobile}
           ></TextField>
           <TextField
             variant="standard"
             sx={{ width: "70%", m: 2, mx: 5 }}
-            label="Address"
+            label="address"
+            onChange={formik.handleChange}
+            value={formik.values.address}
+            name="address"
           ></TextField>
           <TextField
             variant="standard"
             sx={{ width: "40%", m: 2, mx: 5 }}
             label="City"
+            onChange={formik.handleChange}
+            value={formik.values.city}
+            name="city"
           ></TextField>
         </Box>
 
@@ -57,7 +139,8 @@ const CheckoutPage = (props) => {
           <Button
             sx={{ mx: 1, color: "error" }}
             variant="contained"
-            color="error"
+            color="secondary"
+            onClick={formik.handleSubmit}
           >
             Order Now
           </Button>
@@ -65,14 +148,14 @@ const CheckoutPage = (props) => {
             sx={{ mx: 1, color: "black" }}
             variant="outlined"
             color="error"
-          >
+           onClick={handleCancel}>
             Cancel
           </Button>
         </Box>
       </Grid>
 
       <Divider
-        style={{ background: 'black' }}
+        style={{ background: "black" }}
         sx={{ mx: 1.5 }}
         orientation="vertical"
         variant="middle"
@@ -80,128 +163,80 @@ const CheckoutPage = (props) => {
       />
 
       <Grid sm={4}>
-        <Card elevation={0} sx={{ display: "flex", m: 1 }}>
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <img src={seafoodpizza} alt="pizza" />
-            <CardContent>
-              <Typography component="div" variant="h5">
-                Seafood
-              </Typography>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Button
-                  aria-label="reduce"
-                  onClick={() => {
-                    setCount(Math.max(count - 1, 0));
-                  }}
-                >
-                  <span style={{color:"black"}}>Qty</span>
-                  <RemoveIcon fontSize="small" />
-                  
-                </Button>
-                 
-                <Badge color="secondary" badgeContent={count}>
-                  
-                </Badge>
-                <Button
-                  aria-label="increase"
-                  onClick={() => {
-                    setCount(count + 1);
-                  }}
-                >
-                  <AddIcon fontSize="small" />
-                </Button>
-              </Box>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography>Total: 20$</Typography>
-                
-              </Box>
-            </CardContent>
-          </Box>
-        </Card>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            {cartItems.map((product) => (
+              <Card
+                key={product.id}
+                elevation={0}
+                sx={{ display: "flex", m: 1 }}
+              >
+                <CardContent>
+                  <Grid container spacing={1}>
+                    <Grid item xs={6} sm={6}>
+                      <img src={product.image} alt="pizza" width={"50%"} />
+                    </Grid>
+                    <Grid item container xs={6} sm={6}>
+                      <Grid item xs={12} sm={12}>
+                        <Typography component="div" variant="h5">
+                          {product.name}
+                        </Typography>
+                      </Grid>
+                      <Grid item container xs={12} sm={12} alignItems="center">
+                        <Typography>Qty:</Typography>
+                        <IconButton
+                          onClick={() =>
+                            dispatch(handleDecrementQuantity(product.id))
+                          }
+                        >
+                          <RemoveIcon />
+                        </IconButton>
 
-        <Card elevation={0} sx={{ display: "flex", m: 1 }}>
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <img src={seafoodpizza } alt="pizza" />
-            <CardContent>
-              <Typography component="div" variant="h5">
-                Seafood
-              </Typography>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Button
-                  aria-label="reduce"
-                  onClick={() => {
-                    setCount(Math.max(count - 1, 0));
-                  }}
-                >
-                  <span style={{color:"black"}}>Qty</span>
-                  <RemoveIcon fontSize="small" />
-                  
-                </Button>
-                 
-                <Badge color="secondary" badgeContent={count}>
-                  
-                </Badge>
-                <Button
-                  aria-label="increase"
-                  onClick={() => {
-                    setCount(count + 1);
-                  }}
-                >
-                  <AddIcon fontSize="small" />
-                </Button>
-              </Box>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography>Total: 20$</Typography>
-                
-              </Box>
-            </CardContent>
-          </Box>
-        </Card>
+                        <Badge
+                          color="secondary"
+                          badgeContent={product.quantity}
+                        ></Badge>
 
-        <Card elevation={0} sx={{ display: "flex", m: 1 }}>
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <img src={seafoodpizza} alt="pizza" />
-            <CardContent>
-              <Typography component="div" variant="h5">
-                Seafood
-              </Typography>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Button
-                  aria-label="reduce"
-                  onClick={() => {
-                    setCount(Math.max(count - 1, 0));
-                  }}
-                >
-                  <span style={{color:"black"}}>Qty</span>
-                  <RemoveIcon fontSize="small" />
-                  
-                </Button>
-                 
-                <Badge color="secondary" badgeContent={count}>
-                  
-                </Badge>
-                <Button
-                  aria-label="increase"
-                  onClick={() => {
-                    setCount(count + 1);
-                  }}
-                >
-                  <AddIcon fontSize="small" />
-                </Button>
-              </Box>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Typography>Total: 20$</Typography>
-                
-              </Box>
-            </CardContent>
-          </Box>
-        </Card>
-        <Divider variant="middle" style={{ background: 'black' }}
-        sx={{ mx: 1.5 }}
-        orientation="horizontal"
-       
-        flexItem />
-        <Typography sx={{ m: 1.5 }}>Subtotal: 60$ .00</Typography>
+                        <IconButton
+                          onClick={() =>
+                            dispatch(handleIncrementQuantity(product.id))
+                          }
+                        >
+                          <AddIcon />
+                        </IconButton>
+                        <IconButton
+                          onClick={() => dispatch(handleRemove(product.id))}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems="center">
+                    <Grid item xs={6}>
+                      <Typography>
+                        Total: $ {product.price * product.quantity}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </CardContent>
+              </Card>
+            ))}
+          </Grid>
+          <Divider variant="middle" />
+          <Grid item xs={12}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyItems: "center",
+                flexDirection: "column",
+                m: 1,
+              }}
+            >
+              <Box>| SubTotal: $ {total} |</Box>
+            </Box>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

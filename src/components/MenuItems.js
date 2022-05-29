@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { styled } from "@mui/material/styles";
+
 import { useStyles } from "../styles";
 import {
   Card,
@@ -13,8 +13,7 @@ import {
   Button,
   Badge,
   CardActionArea,
-  IconButton,
-  Container,
+
   Grid,
 } from "@mui/material";
 import { useEffect } from "react";
@@ -24,35 +23,43 @@ const MenuItems = ({ selectedCategory, }) => {
   const styles = useStyles();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.app.products);
+ 
 
+  const filteredProducts = products?.filter((product) => product.category.id === selectedCategory)
+ 
   const handleIncrementQuantity = (id) => {
-    console.log({id})
+   
     dispatch(incrementQuantity(id));
   
   };
-   
+
+  
   const handleDecrementQuantity = (id) => {
     dispatch(decrementQuantity(id));
   };
 
+
+
   useEffect(() => {
     dispatch(getProducts());
   }, []);
+  console.log(getProducts)
   return (
-    <Grid container spacing={1} style={{ textAlign:"center "}}>
-      {products
-        ?.filter((product) => product.category === selectedCategory)
+    <Grid id="menu" container spacing={3} style={{ textAlign:"center " }} maxWidth="lg" >
+      {filteredProducts
         .map((product) => (
-          <Grid item xs={11} sm={4} md={3}>
-            <Card key={product.id} className={styles.card} style={{ direction: "row", display: "flex", }}>
+          <Grid item xs={11} sm={4} md={4} key={product.id} justifyContent="center"
+          sx={{ alignItems: "center" }}>
+            <Card sx={{width:"100%" , height:"100%"}} className={styles.card} style={{ direction: "row", display: "flex" }} >
   
             <Box >
             <CardActionArea>
               <CardMedia
-                component="img"
+                    component="img"
+                    sx={{ width: "10rem" }}
                 alt={product.name}
                 image={product.image}
-                class="media"
+                className="media"
                   />
                    </CardActionArea>
               </Box>
@@ -71,18 +78,21 @@ const MenuItems = ({ selectedCategory, }) => {
               </Typography>
               <Box className={styles.cardFooter}>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  {product.calorie} Cal
+                  {product.description} 
                 </Typography>
                 <Typography variant="body2" color="textPrimary" component="p">
                   ${product.price}
-                </Typography>
-                <Button
-                  aria-label="reduce"
-                  onClick={() => {
-                    handleDecrementQuantity(product.id);
-                  }}
+                    </Typography>
+                   
+                    <Button
+                      aria-label="reduce"
+                      disabled= {product.quantity<1 ? true: false}
+                      onClick={() => {
+                        
+                        handleDecrementQuantity(product.id);
+                         }} 
                   
-                >
+                >  
                   <span style={{ color: "black" }}></span>
                   <RemoveIcon fontSize="small" />
                 </Button>
@@ -93,10 +103,12 @@ const MenuItems = ({ selectedCategory, }) => {
                   aria-label="increase"
                   onClick={() => {
                     handleIncrementQuantity(product.id);   
-                  }}
-                >
+                     }}
+                    >
+                      
                   <AddIcon fontSize="small" />
-                </Button>
+                    </Button>
+                    
               </Box>
               </CardContent>
               </Box>

@@ -13,15 +13,16 @@ import OrderSuccess from "./pages/OrderSuccess";
 function App() {
   return (
     <div className="App">
-      <NavBar />
       <BrowserRouter>
+      <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
        
           <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/ordersuccess" element={<OrderSuccess />} />
+          <Route path="/ordersuccess/:orderId" element={<OrderSuccess />} />
           <Route path="/dashboard" element={<AdminPage />} />
         </Routes>
+       
       </BrowserRouter>
     </div>
   );

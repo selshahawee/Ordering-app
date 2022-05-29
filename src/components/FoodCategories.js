@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-
+import { Container,Grid} from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -18,18 +18,19 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function FoodCategories({ setSelectedCategory }) {
     const dispatch = useDispatch();
-    const sherif = useSelector((state) => state.app.categories);
+    const categories = useSelector((state) => state.app.categories);
   
     useEffect(() => {
       dispatch(getCategories());
-    }, []);
+    },[]);
 
   return (
-    <>
-      {" "}
+    <Grid  container justifyContent='center' spacing={2}>
+      <Grid item xs={12}>
       <Stack
         sx={{ justifyContent: "center", alignItems: "center" }}
         direction="row"
+      
         divider={
           <Divider
             style={{ background: " solid black" }}
@@ -41,9 +42,9 @@ function FoodCategories({ setSelectedCategory }) {
         p={5}
       >
         
-        {sherif?.map((category, index) => (
+        {categories?.map((category, index) => (
           
-          <Button size="large" key={index} onClick={() => setSelectedCategory(category.name)}>
+          <Button size="large" key={index} onClick={() => setSelectedCategory(category.id)}>
               
               <Item p={50}>
                 
@@ -58,9 +59,15 @@ function FoodCategories({ setSelectedCategory }) {
             </Item>{" "}
           </Button>
         ))}
-      </Stack>
-    </>
+        </Stack>
+        </Grid>
+      </Grid>
   );
 }
 
 export default FoodCategories;
+
+
+
+
+
