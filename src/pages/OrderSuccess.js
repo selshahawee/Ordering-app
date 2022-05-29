@@ -27,7 +27,7 @@ const OrderSuccess = () => {
       <Typography variant="h3">Order Placed</Typography>
       <Typography sx={{
        p: 12,
-      }} variant="h4">Order Number: {orderId}</Typography>
+      }} variant="h5">Order Number: {orderId} </Typography>
       <Box className={styles.row}>
           <Box className={statusClass(0)}>
             <img src="../images/paid.png" width={30} height={30} alt="" />

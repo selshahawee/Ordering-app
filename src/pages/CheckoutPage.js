@@ -10,17 +10,13 @@ import {
 } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { useFormik } from "formik";
-
 import * as api from "../api";
-
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
-
 import Badge from "@mui/material/Badge";
 import {
   incrementQuantity,
@@ -32,10 +28,6 @@ const CheckoutPage = (props) => {
   const cartItems = useSelector((state) =>
     state.app.products?.filter((product) => product.quantity > 0)
   );
-
-
-
- 
 
   const total = sum(cartItems);
 
@@ -61,8 +53,8 @@ const CheckoutPage = (props) => {
   };
 
   const handleCancel = () => {
-		navigate('/');
-	};
+    navigate("/");
+  };
 
   const navigate = useNavigate();
 
@@ -148,7 +140,8 @@ const CheckoutPage = (props) => {
             sx={{ mx: 1, color: "black" }}
             variant="outlined"
             color="error"
-           onClick={handleCancel}>
+            onClick={handleCancel}
+          >
             Cancel
           </Button>
         </Box>
@@ -171,55 +164,63 @@ const CheckoutPage = (props) => {
                 elevation={0}
                 sx={{ display: "flex", m: 1 }}
               >
-                <CardContent>
-                  <Grid container spacing={1}>
-                    <Grid item xs={6} sm={6}>
-                      <img src={product.image} alt="pizza" width={"50%"} />
+                <Box sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+                  <CardContent>
+                    <Grid container spacing={1}>
+                      <Grid item xs={6} sm={6}>
+                        <img src={product.image} alt="pizza" width={"50%"} />
+                      </Grid>
+                      <Grid item container xs={6} sm={6}>
+                        <Grid item xs={12} sm={12}>
+                          <Typography component="div" variant="h5">
+                            {product.name}
+                          </Typography>
+                        </Grid>
+                        <Grid
+                          item
+                          container
+                          xs={12}
+                          sm={12}
+                          alignItems="center"
+                        >
+                          <Typography>Qty:</Typography>
+                          <IconButton
+                            onClick={() =>
+                              dispatch(handleDecrementQuantity(product.id))
+                            }
+                          >
+                            <RemoveIcon />
+                          </IconButton>
+
+                          <Badge
+                            color="secondary"
+                            badgeContent={product.quantity}
+                          ></Badge>
+
+                          <IconButton
+                            onClick={() =>
+                              dispatch(handleIncrementQuantity(product.id))
+                            }
+                          >
+                            <AddIcon />
+                          </IconButton>
+                          <IconButton
+                            onClick={() => dispatch(handleRemove(product.id))}
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        </Grid>
+                      </Grid>
                     </Grid>
-                    <Grid item container xs={6} sm={6}>
-                      <Grid item xs={12} sm={12}>
-                        <Typography component="div" variant="h5">
-                          {product.name}
+                    <Grid container alignItems="center">
+                      <Grid item xs={6}>
+                        <Typography>
+                          Total: $ {product.price * product.quantity}
                         </Typography>
                       </Grid>
-                      <Grid item container xs={12} sm={12} alignItems="center">
-                        <Typography>Qty:</Typography>
-                        <IconButton
-                          onClick={() =>
-                            dispatch(handleDecrementQuantity(product.id))
-                          }
-                        >
-                          <RemoveIcon />
-                        </IconButton>
-
-                        <Badge
-                          color="secondary"
-                          badgeContent={product.quantity}
-                        ></Badge>
-
-                        <IconButton
-                          onClick={() =>
-                            dispatch(handleIncrementQuantity(product.id))
-                          }
-                        >
-                          <AddIcon />
-                        </IconButton>
-                        <IconButton
-                          onClick={() => dispatch(handleRemove(product.id))}
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                      </Grid>
                     </Grid>
-                  </Grid>
-                  <Grid container alignItems="center">
-                    <Grid item xs={6}>
-                      <Typography>
-                        Total: $ {product.price * product.quantity}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </CardContent>
+                  </CardContent>
+                </Box>
               </Card>
             ))}
           </Grid>

@@ -6,7 +6,7 @@ import RectangleIcon from "@mui/icons-material/Rectangle";
 import {  useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "@mui/material/Card";
-import { getOrders, orderComplete } from "../actions/adminPageActions";
+import { getOrders} from "../actions/adminPageActions";
 import CardContent from "@mui/material/CardContent";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -86,7 +86,7 @@ const AdminPage = () => {
                   </Typography>}
                   control={<Checkbox color="default" />}
                   checked={order.completed}
-                  onClick={() => dispatch(orderComplete(order.id))}
+                 
                      />
                     </CardContent>
                       );

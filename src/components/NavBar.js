@@ -34,12 +34,13 @@ export default function NavBar(props) {
             style={{ textDecoration: "none" }}
             sx={{ pr: 2 }}
             className="white"
+            
           >
             
             <span style={{ color:"white" }}> Menu</span>
           </Link>
           <Link
-            
+            href="/"
             style={{ textDecoration: "none" }}
             sx={{ pr: 2 }}
             onClick={() => { }}

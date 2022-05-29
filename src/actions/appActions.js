@@ -15,31 +15,26 @@ export const getCategories = () => async (dispatch) => {
 
 export const getProducts = () => async (dispatch) => {
   try {
-    const { data} = await api.getProducts();
-    
+    const { data } = await api.getProducts();
+
     dispatch({
       type: "FETCH_PRODUCTS",
       payload: data,
-     });
+    });
   } catch (error) {
     console.log({ error });
   }
 };
 
 export const incrementQuantity = (id) => {
- 
   return {
     type: "INCREMENT_QUANTITY",
 
     payload: {
       id,
-   
     },
-  
   };
-  
 };
-
 
 export const decrementQuantity = (id) => {
   return {
@@ -58,4 +53,4 @@ export const deleteFromCart = (id) => {
       id,
     },
   };
-}
+};

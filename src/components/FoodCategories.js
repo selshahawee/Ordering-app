@@ -25,8 +25,8 @@ function FoodCategories({ setSelectedCategory }) {
     },[]);
 
   return (
-    <Grid  container justifyContent='center' spacing={2}>
-      <Grid item xs={12}>
+    <Grid  container justifyContent='center' >
+      <Grid item xs={4} >
       <Stack
         sx={{ justifyContent: "center", alignItems: "center" }}
         direction="row"

@@ -14,18 +14,8 @@ export const getOrders = () => async (dispatch) => {
 };
 
 
-export const checkBox = (order, id) => {
-  return {
-    type: "CHECKED",
-    payload: { order, id },
-  };
-};
 
-export const orderComplete = (id) => {
-  return {
-    type: "COMPLETED",
-    payload: { id },
-  };
-};
+
+
 
 
