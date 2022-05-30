@@ -12,6 +12,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Divider from "@mui/material/Divider";
 import moment from "moment";
+import CompleteButton from "../components/CompleteButton";
 
 
 const AdminPage = () => {
@@ -92,10 +93,13 @@ const AdminPage = () => {
                         }
                         control={<Checkbox color="default" />}
                         checked={order.completed}
+                  
                       />
+                      
                     </CardContent>
                   );
                 })}
+                <CompleteButton item={item}/>
               </Card>
             </Grid>
           );

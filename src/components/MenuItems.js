@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
-import { useStyles } from "../styles";
 import {
   Card,
   CardContent,
@@ -20,7 +19,7 @@ import { getProducts } from "../actions/appActions";
 import { incrementQuantity, decrementQuantity } from "../actions/appActions";
 
 const MenuItems = ({ selectedCategory }) => {
-  const styles = useStyles();
+ 
   const dispatch = useDispatch();
   const products = useSelector((state) => state.app.products);
 
@@ -59,7 +58,7 @@ console.log(products)
               display: "flex",
               flexDirection: "row",
             }}
-            className={styles.card}
+          
           >
             <Box>
               <CardActionArea>

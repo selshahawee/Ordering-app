@@ -10,7 +10,10 @@ import AdminPage from "./pages/AdminPage";
 import OrderSuccess from "./pages/OrderSuccess";
 
 
+
+
 function App() {
+  console.log(process.env.REACT_APP_BASE_URL)
   return (
     <div className="App">
       <BrowserRouter>
