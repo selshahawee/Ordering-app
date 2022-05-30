@@ -48,22 +48,24 @@ const MenuItems = ({ selectedCategory }) => {
       container
       spacing={3}
       style={{ textAlign: "center " }}
-      maxWidth="lg"
+      justifyContent='center'
+      sx={{ alignItems:'center'}}
     >
       {filteredProducts.map((product) => (
         <Grid
           item
-          xs={11}
-          sm={4}
-          md={4}
+          spacing={3}
+          md={5}
+          xs={12}
           key={product.id}
-          justifyContent="center"
-          sx={{ alignItems: "center" }}
+          margin="auto"
+          
+         
         >
           <Card
-            sx={{ width: "100%", height: "100%" }}
+            sx={{ maxWidth: 'sm' , m:"auto" , justifyContent: 'space-between' , display: "flex", flexDirection:"row"}}
             className={styles.card}
-            style={{ direction: "row", display: "flex" }}
+            
           >
             <Box>
               <CardActionArea>
