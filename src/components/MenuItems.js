@@ -18,6 +18,9 @@ import {
 import { useEffect } from "react";
 import { getProducts } from "../actions/appActions";
 import { incrementQuantity, decrementQuantity } from "../actions/appActions";
+
+
+
 const MenuItems = ({ selectedCategory }) => {
   const styles = useStyles();
   const dispatch = useDispatch();

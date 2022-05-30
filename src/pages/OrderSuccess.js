@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import Check from "../image/Check.png";
+
 import styles from "../styles/Order.module.css"
 import { useParams } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const OrderSuccess = () => {
         mt: 12,
       }}
     >
-      <img src={Check} alt="checked"/>
+      <img src="../images/check.png" alt="checked"/>
       <Typography variant="h3">Order Placed</Typography>
       <Typography sx={{
        p: 12,
