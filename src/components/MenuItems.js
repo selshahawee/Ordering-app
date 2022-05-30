@@ -39,7 +39,7 @@ const MenuItems = ({ selectedCategory }) => {
   useEffect(() => {
     dispatch(getProducts());
   }, []);
-  console.log(getProducts);
+console.log(products)
   return (
     <Grid
       id="menu"
@@ -50,11 +50,11 @@ const MenuItems = ({ selectedCategory }) => {
       sx={{ alignItems: "center" }}
     >
       {filteredProducts.map((product) => (
-        <Grid item spacing={3} md={5} xs={12} key={product.id} margin="auto">
+        <Grid item  md={5} xs={12} key={product.id} margin="auto">
           <Card
             sx={{
               maxWidth: "sm",
-              m: "auto",
+               m: "auto",
               justifyContent: "space-between",
               display: "flex",
               flexDirection: "row",

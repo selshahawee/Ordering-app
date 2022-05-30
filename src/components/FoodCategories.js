@@ -2,18 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../actions/appActions";
 import { Avatar, Button } from "@material-ui/core";
+import styles from "../styles/Button.module.css";
 
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
+
 import { Box } from "@mui/material";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+
 
 function FoodCategories({ setSelectedCategory }) {
   const dispatch = useDispatch();
@@ -40,15 +34,17 @@ function FoodCategories({ setSelectedCategory }) {
           size="large"
           key={index}
           onClick={() => setSelectedCategory(category.id)}
-        >
-          <Item>
+         
+          className={styles.btn} >
+     
             <Avatar
-              style={{ width: 50, height: 50 }}
+              style={{ width: 50, height: 50 ,m:8 }}
               alt={category.name}
-              src={category.image}
+            src={category.image}
+            m={2}
             ></Avatar>{" "}
-            {category.name}
-          </Item>{" "}
+          {category.name}
+            
         </Button>
       ))}
     </Box>
