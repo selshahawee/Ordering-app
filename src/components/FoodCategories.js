@@ -25,7 +25,7 @@ function FoodCategories({ setSelectedCategory }) {
         alignItems: "center",
         justifyContent: "center",
       }}
-      p={3}
+      p={5}
       xs={{ p: 2 }}
       md={{ p: 8 }}
     >

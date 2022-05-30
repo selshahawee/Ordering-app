@@ -82,7 +82,7 @@ console.log(products)
                 >
                   {product.name}
                 </Typography>
-                <Box className={styles.cardFooter}>
+                <Box >
                   <Typography
                     variant="body2"
                     color="textSecondary"
