@@ -1,16 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Poppins&family=Sacramento&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat&family=Poppins&family=Sacramento&display=swap");
 
 
-
-/* .App {
-  text-align: center;
-} */
-
-body ,html{
-  font-family: 'Poppins', sans-serif;
+body,
+html {
+  font-family: "Poppins", sans-serif;
 }
 
-
-
-
-.sidebar{ maxHeight: 100%;}
+.sidebar {
+  maxheight: 100%;
+}

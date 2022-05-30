@@ -19,8 +19,6 @@ import { useEffect } from "react";
 import { getProducts } from "../actions/appActions";
 import { incrementQuantity, decrementQuantity } from "../actions/appActions";
 
-
-
 const MenuItems = ({ selectedCategory }) => {
   const styles = useStyles();
   const dispatch = useDispatch();
@@ -48,24 +46,20 @@ const MenuItems = ({ selectedCategory }) => {
       container
       spacing={3}
       style={{ textAlign: "center " }}
-      justifyContent='center'
-      sx={{ alignItems:'center'}}
+      justifyContent="center"
+      sx={{ alignItems: "center" }}
     >
       {filteredProducts.map((product) => (
-        <Grid
-          item
-          spacing={3}
-          md={5}
-          xs={12}
-          key={product.id}
-          margin="auto"
-          
-         
-        >
+        <Grid item spacing={3} md={5} xs={12} key={product.id} margin="auto">
           <Card
-            sx={{ maxWidth: 'sm' , m:"auto" , justifyContent: 'space-between' , display: "flex", flexDirection:"row"}}
+            sx={{
+              maxWidth: "sm",
+              m: "auto",
+              justifyContent: "space-between",
+              display: "flex",
+              flexDirection: "row",
+            }}
             className={styles.card}
-            
           >
             <Box>
               <CardActionArea>

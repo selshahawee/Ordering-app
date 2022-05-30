@@ -1,25 +1,22 @@
-import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import FoodCategories from "./FoodCategories"
-import MenuItems from "./MenuItems"
-import { useDispatch} from "react-redux";
+import * as React from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FoodCategories from "./FoodCategories";
+import MenuItems from "./MenuItems";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getProducts } from "../actions/appActions";
-import { Grid } from "@mui/material";
 
 export default function BasicAccordion() {
+  const dispatch = useDispatch();
 
+  const [selectedCategory, setSelectedCategory] = useState(1);
 
-    const dispatch = useDispatch();
+  useEffect(() => dispatch(getProducts()));
 
-    const [selectedCategory, setSelectedCategory] = useState(1);
-  
-    useEffect(() => dispatch(getProducts()), );
-  
   return (
     <div>
       <Accordion>
@@ -31,7 +28,7 @@ export default function BasicAccordion() {
           <Typography>Most Popular</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <FoodCategories selectedCategory={selectedCategory}/>
+          <FoodCategories setSelectedCategory={setSelectedCategory} />
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -42,13 +39,10 @@ export default function BasicAccordion() {
         >
           <Typography>Menu</Typography>
         </AccordionSummary>
-              <AccordionDetails>
-           
-                      <MenuItems selectedCategory={selectedCategory} />
-                
+        <AccordionDetails>
+          <MenuItems selectedCategory={selectedCategory} />
         </AccordionDetails>
       </Accordion>
-      
     </div>
   );
 }

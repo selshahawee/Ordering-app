@@ -9,7 +9,7 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload.map((product) => {
-          return { ...product, quantity: 0};
+          return { ...product, quantity: 0 };
         }),
       };
     case "FETCH_CATEGORIES":
@@ -18,7 +18,6 @@ const appReducer = (state = initialState, action) => {
         categories: action.payload,
       };
     case "INCREMENT_QUANTITY":
-      
       return {
         ...state,
         products: state.products.map((product) => {
@@ -29,7 +28,7 @@ const appReducer = (state = initialState, action) => {
           };
         }),
       };
-    
+
     case "DECREMENT_QUANTITY":
       return {
         ...state,
@@ -42,26 +41,17 @@ const appReducer = (state = initialState, action) => {
         }),
       };
 
-    
     case "DELETE_FROM_CART":
       return {
-     
-          ...state,
-          products: state.products.map((product) => {
-            if (product.id !== action.payload.id) return product;
-            return {
-              ...product,
-              quantity: product.quantity === 0,
-            };
-          }),
-        };
-      
-     
-    
-    
-     
-     
-    
+        ...state,
+        products: state.products.map((product) => {
+          if (product.id !== action.payload.id) return product;
+          return {
+            ...product,
+            quantity: product.quantity === 0,
+          };
+        }),
+      };
 
     default:
       return state;

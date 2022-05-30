@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../actions/appActions";
 import { Avatar, Button } from "@material-ui/core";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
+
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { Container,Grid} from "@mui/material";
+import { Box } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -17,57 +16,43 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function FoodCategories({ setSelectedCategory }) {
-    const dispatch = useDispatch();
-    const categories = useSelector((state) => state.app.categories);
-  
-    useEffect(() => {
-      dispatch(getCategories());
-    },[]);
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.app.categories);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
 
   return (
-    <Grid  container justifyContent='center' >
-      <Grid item xs={4} >
-      <Stack
-        sx={{ justifyContent: "center", alignItems: "center" }}
-        direction="row"
-      
-        divider={
-          <Divider
-            style={{ background: " solid black" }}
-            orientation="vertical"
-            flexItem
-          />
-        }
-        spacing={3}
-        p={5}
-      >
-        
-        {categories?.map((category, index) => (
-          
-          <Button size="large" key={index} onClick={() => setSelectedCategory(category.id)}>
-              
-              <Item p={50}>
-                
-              <Avatar
-                style={{ width: 50, height: 50 }}
-                alt={category.name}
-                src={category.image}
-              >
-                
-              </Avatar>{" "}
-              {category.name}
-            </Item>{" "}
-          </Button>
-        ))}
-        </Stack>
-        </Grid>
-      </Grid>
+    <Box
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      p={3}
+      xs={{ p: 2 }}
+      md={{ p: 8 }}
+    >
+      {categories?.map((category, index) => (
+        <Button
+          size="large"
+          key={index}
+          onClick={() => setSelectedCategory(category.id)}
+        >
+          <Item>
+            <Avatar
+              style={{ width: 50, height: 50 }}
+              alt={category.name}
+              src={category.image}
+            ></Avatar>{" "}
+            {category.name}
+          </Item>{" "}
+        </Button>
+      ))}
+    </Box>
   );
 }
 
 export default FoodCategories;
-
-
-
-
-
