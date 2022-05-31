@@ -49,10 +49,10 @@ console.log(products)
       sx={{ alignItems: "center" }}
     >
       {filteredProducts.map((product) => (
-        <Grid item  md={5} xs={12} key={product.id} margin="auto">
+        <Grid item  md={4} xs={12} key={product.id} margin="auto">
           <Card
             sx={{
-              maxWidth: "sm",
+              maxWidth: "400px",
                m: "auto",
               justifyContent: "space-between",
               display: "flex",
@@ -67,7 +67,7 @@ console.log(products)
                   sx={{ width: "10rem" }}
                   alt={product.name}
                   image={product.image}
-                  className="media"
+                 
                 />
               </CardActionArea>
             </Box>
