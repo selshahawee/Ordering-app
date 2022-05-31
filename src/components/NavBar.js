@@ -3,7 +3,7 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Cart from "./Cart";
+import Cart from "./cart";
 import Typography from "@mui/material/Typography";
 
 import Link from "@mui/material/Link";

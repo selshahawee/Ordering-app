@@ -37,8 +37,8 @@ const MenuItems = ({ selectedCategory }) => {
 
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
-console.log(products)
+  }, [dispatch]);
+
   return (
     <Grid
       id="menu"

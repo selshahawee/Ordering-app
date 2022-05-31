@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
-import MenuItems from "./MenuItems";
+import MenuItems from "./menuItems";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import FoodCategories from "./FoodCategories";
+import FoodCategories from "./foodCategories";
 import { getProducts } from "../actions/appActions";
 
 const Menu = () => {

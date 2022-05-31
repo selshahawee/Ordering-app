@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../actions/appActions";
-import { Avatar, Button,Grid } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
 import styles from "../styles/Button.module.css";
 
 
@@ -15,7 +15,7 @@ function FoodCategories({ setSelectedCategory }) {
 
   useEffect(() => {
     dispatch(getCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     

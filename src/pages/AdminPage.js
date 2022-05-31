@@ -12,7 +12,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Divider from "@mui/material/Divider";
 import moment from "moment";
-import CompleteButton from "../components/CompleteButton";
+import CompleteButton from "../components/completeButton";
 
 
 const AdminPage = () => {

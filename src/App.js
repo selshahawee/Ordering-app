@@ -1,19 +1,19 @@
 import React from "react";
 import "./App.css";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/navBar";
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/homePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import CheckoutPage from "./pages/CheckoutPage";
-import AdminPage from "./pages/AdminPage";
-import OrderSuccess from "./pages/OrderSuccess";
+import CheckoutPage from "./pages/checkoutPage";
+import AdminPage from "./pages/adminPage";
+import OrderSuccess from "./pages/orderSuccess";
 
 
 
 
 function App() {
-  console.log(process.env.REACT_APP_BASE_URL)
+ 
   return (
     <div className="App">
       <BrowserRouter>
