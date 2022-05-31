@@ -23,7 +23,7 @@ const OrderSuccess = () => {
         mt: 12,
       }}
     >
-      <img src="../images/check.png" alt="checked" />
+      <img src="../images/Check.png" alt="checked" />
       <Typography variant="h3">Order Placed</Typography>
       <Typography
         sx={{
