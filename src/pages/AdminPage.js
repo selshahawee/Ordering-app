@@ -12,7 +12,6 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Divider from "@mui/material/Divider";
 import moment from "moment";
-import CompleteButton from "../components/completeButton";
 
 
 const AdminPage = () => {
@@ -25,31 +24,25 @@ const AdminPage = () => {
   const filteredOrders = orders.filter((order) => order.completed === view);
 
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{ mb: 0, mt: 5, maxWidth: "lg", minHeight: "100vh" }}
-    >
-      <Grid item sm={3} sx={{ py: 6, bgcolor: "#303030" }} className="sidebar">
+    <Grid container sx={{ minHeight: "100vh" }}>
+      <Grid item sm={2} sx={{ bgcolor: "#303030" }} className="sidebar">
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Typography sx={{ color: "white" }} variant="h4">
+          <Typography sx={{ color: "white" }} variant="h4" mt={2}>
             Dashboard
           </Typography>
           <Divider variant="middle" />
         </Box>
         <br />
-        <Box sx={{ justifyContent: "center", displayDirection: "column" }}>
+        <Box sx={{ justifyContent: "center", displayDirection: "column" }} mx={3}>
           <Button
-            variant="outlined"
-            sx={{ px: 4, color: "white", display: "flex", m: 3 }}
+            sx={{ px: 4, color: "white",  display: "flex", m: 3 }}
             startIcon={<RectangleIcon fontSize="large" sx={{ color: "red" }} />}
             onClick={() => setView(false)}
           >
             Pending Orders
           </Button>
           <Button
-            variant="outlined"
-            sx={{ px: 4, color: "white", display: "flex", m: 3 }}
+            sx={{ color: "white", display: "flex" }}
             startIcon={<RectangleIcon fontSize="large" sx={{ color: "red" }} />}
             onClick={() => setView(true)}
           >
@@ -61,18 +54,18 @@ const AdminPage = () => {
       <Grid
         item
         container
-        sm={9}
-        spacing={2}
+        sm={10}
+        spacing={6}
         sx={{
-          mt: 5,
           display: "flex",
           flexWrap: "wrap",
           displayDirection: "row",
         }}
+        p={8}
       >
         {filteredOrders.map((item) => {
           return (
-            <Grid item sm={5} sx={{ m: 3 }} key={item.id}>
+            <Grid item sm={4} sx={{}} key={item.id}>
               <Card>
                 <Box sx={{ bgcolor: "#303030" }}>
                   <Typography align="right" sx={{ color: "white", mx: 1 }}>
@@ -93,13 +86,10 @@ const AdminPage = () => {
                         }
                         control={<Checkbox color="default" />}
                         checked={order.completed}
-                  
                       />
-                      
                     </CardContent>
                   );
                 })}
-                <CompleteButton item={item}/>
               </Card>
             </Grid>
           );
