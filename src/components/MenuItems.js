@@ -14,8 +14,7 @@ import {
   CardActionArea,
   Grid,
 } from "@mui/material";
-import { useEffect } from "react";
-import { getProducts } from "../actions/appActions";
+
 import { incrementQuantity, decrementQuantity } from "../actions/appActions";
 
 const MenuItems = ({ selectedCategory }) => {
@@ -35,10 +34,7 @@ const MenuItems = ({ selectedCategory }) => {
     dispatch(decrementQuantity(id));
   };
 
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
-
+ 
   return (
     <Grid
       id="menu"

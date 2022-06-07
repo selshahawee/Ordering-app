@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../actions/appActions";
+import React from "react";
+import {  useSelector } from "react-redux";
+
 import { Avatar, Button } from "@material-ui/core";
 import styles from "../styles/Button.module.css";
 
@@ -10,13 +10,14 @@ import { Box } from "@mui/material";
 
 
 function FoodCategories({ setSelectedCategory }) {
-  const dispatch = useDispatch();
+
   const categories = useSelector((state) => state.app.categories);
 
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
+ 
+  const handelChangeCat= (id)=>{
 
+    setSelectedCategory(id)
+  }
   return (
     
     <Box
@@ -33,7 +34,7 @@ function FoodCategories({ setSelectedCategory }) {
         <Button
           size="large"
           key={index}
-          onClick={() => setSelectedCategory(category.id)}
+          onClick={() => handelChangeCat(category.id)}
          
           className={styles.btn} >
      

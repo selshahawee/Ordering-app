@@ -28,6 +28,7 @@ import {
   deleteFromCart,
 } from "../actions/appActions";
 export default function Cart(product) {
+  
   const cartItems = useSelector((state) =>
     state.app.products?.filter((product) => product.quantity > 0)
   );
